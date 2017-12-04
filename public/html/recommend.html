@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+<!-- vue -->
+  <script src="https://unpkg.com/vue"></script>
+<!-- jQ -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<!-- main CSS -->
+  <link rel="stylesheet" href="/css/main.css"/>
+</head>
+
+<body>
+  <div id="app">
+
+    <main-nav></main-nav>
+
+<!-- main content -->
+    <div class="container">
+      <div class="row col-xs-12 col-xl-12">
+        <h1> recommend a triggering scene </h1>
+        <form id="recForm" v-on:submit.prevent="recommend">
+          <div>
+            <input class="recFormItem" type="text" placeholder="enter your email (required)" size="50" v-model="recForm.userEmail"/>
+          </div>
+          <div>
+            <input class="recFormItem" type="text" placeholder="title (required)" size="50"  v-model="recForm.title"/>
+          </div>
+          <div>
+            <input class="recFormItem" type="text" placeholder="trigger type (required)" size="50"  v-model="recForm.triggerType"/>
+          </div>
+          <div>
+            <input class="recFormItem" type="text" placeholder="episode number" size="50"  v-model="recForm.episodeNumber"/>
+          </div>
+          <div>
+            <input class="recFormItem" type="text" placeholder="episode name" size="50"  v-model="recForm.episodeName"/>
+          </div>
+          <div>
+            <textarea class="recFormItem" type="text" placeholder="description (required)" v-model="recForm.description" rows="2" cols="42"></textarea>
+          </div>
+          <div>
+            <input id="recFormButton" type="submit" class="btn btn-outline-info">
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+<!-- search div -->
+    <div class="container-fluid">
+      <div id="search" class="row col-xs-12">
+
+          <a href="/search"></a>
+
+      </div>
+    </div>
+
+
+<!-- footer div -->
+    <div id="footer">
+      <main-footer></main-footer>
+    </div>
+
+  </div>  <!-- z app -->
+
+<!-- bootstrap -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- main JS -->
+  <script src="/js/main.js"></script>
+</body>
+</html>
