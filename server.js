@@ -4,6 +4,9 @@ require('mongoose-type-email')
 var Nightmare = require('nightmare')
 var bodyParser = require('body-parser')
 
+/* web scraping */
+var request = require('request')
+var cheerio = require('cheerio')
 
 /* login */
 // var bcrypt = require('bcryptjs')
@@ -83,8 +86,35 @@ var RecSchema = new mongoose.Schema({
 })
 var RecModel = mongoose.model('Rec', RecSchema)
 
+var MediaSchema = new mongoose.Schema({
+  title: {
+    type:     String,
+    required: true,
+    unique:   true,
+  },
+  triggerType: {
+    type:    String,
+    required: true,
+  },
+  episodeNumber: {
+    type:     String,
+    required: false,
+  },
+  episodeName: {
+    type:     String,
+    required: false,
+  },
+  description: {
+    type:     String,
+    required: false,
+  },
+})
+
+var MediaModel = mongoose.model('Media', MediaSchema)
+
 
 /* ST express stuffz */
+/* authentication stuff */
 // var checkIfLoggedIn = function(req,res,next) {
 //   if(req.session._id) {
 //     console.log('user is logged in. proceeding to the next route handler.')
@@ -93,12 +123,9 @@ var RecModel = mongoose.model('Rec', RecSchema)
 //     res.redirect('/register')
 //   }
 // }
-
 // app.use(function(req,res,next) {
 //   res.sendFile('./public/html/index.html', {root:'./'})
 // })
-
-
 
 
 /* routes */
@@ -108,6 +135,27 @@ app.get('/', function(req,res) {
 
 app.get('/search', function(req,res) {
   res.sendFile('./public/html/search.html', {root:'./'})
+})
+
+app.post('/search', function(req,res) {
+  console.log('key --- ', req.body, 'value --- ', req.body.title)
+
+  var query = MediaModel.find({'title':req.body.title})
+
+  query.select(title)
+  query.limit(10)
+
+  res.send('stuff')
+
+  // MediaModel.find({'title':req.body}, 'trigger', function(err, title) {
+  //   if(err) {
+  //     console.log(err)
+  //     res.send('uh ohhhh')
+  //   } else {
+  //     res.send(title)
+  //   }
+  // })
+
 })
 
 app.get('/about', function(req,res) {

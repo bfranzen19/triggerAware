@@ -11,20 +11,16 @@ Vue.component('main-nav', {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/"> home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/about"> about <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login"> login </a>
+            <a class="nav-link" href="/search"> search <span class="sr-only">(current)</span></a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/recommend"> recommend a scene </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard"> dashboard </a>
-          </li>
+
         </ul>
       </div>
     </nav>
@@ -37,19 +33,19 @@ Vue.component('main-footer', {
   `,
 })
 
-Vue.component('search-thing', {
-  template: `
-    <form>
-      <div id="searchBox">
-        <input type="text" name="inputBox" size=24>
-        <input type="submit" value="search">
-      </div>
-    </form>
-  `,
-})
+// Vue.component('search-thing', {
+//   template: `
+//     <form>
+//       <div id="searchBox">
+//         <input type="text" name="inputBox" size=24>
+//         <input type="submit" value="search">
+//       </div>
+//     </form>
+//   `,
+// })
 
 
-var app = new Vue({
+var mainVM = new Vue({
   el: '#app',
   data: {
     // registerForm: {
@@ -62,8 +58,6 @@ var app = new Vue({
     //   password: '',
     // },
 
-    searchQuery: '',
-
     recForm: {
       userEmail: '',
       title: '',
@@ -72,6 +66,9 @@ var app = new Vue({
       episodeName: '',
       description: '',
     },
+
+    searchQuery:'' ,
+    searchResults: '',
   },
 
   methods: {
@@ -80,7 +77,15 @@ var app = new Vue({
       $.post('/recommend', this.recForm, function(dataFromServer) {
         console.log('this is data from the server --- ', dataFromServer)
       })
-      // this.recForm = ""
+      mainVM.recForm = ""
+    },
+
+    searchDB: function() {
+      console.log(this.searchQuery)
+       $.post('/search',{title: this.searchQuery}, function(dataFromServer) {
+        console.log('this is data from the server --- ', dataFromServer)
+      })
+      mainVM.searchQuery = ''
     },
 
     // login: function() {
@@ -90,4 +95,4 @@ var app = new Vue({
     // },
 
   },
-})
+})  // z mainVM
