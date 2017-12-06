@@ -1,12 +1,14 @@
 var express = require('express')
 var mongoose = require('mongoose')
-require('mongoose-type-email')
-var Nightmare = require('nightmare')
+var emailType = require('mongoose-type-email')
 var bodyParser = require('body-parser')
 
 /* web scraping */
 var request = require('request')
 var cheerio = require('cheerio')
+
+/* search */
+var Fuse = require('fuse.js')
 
 /* login */
 // var bcrypt = require('bcryptjs')
@@ -32,13 +34,14 @@ app.use(express.static('./public'))
 // })
 // app.use(sessionsMiddleware)
 
-/* ST database stuffz - user login */
+/* ST database stuffz - mongoose connection */
 mongoose.connect('mongodb://localhost:27017/TriggerAware', {useMongoClient:true}, function(mongooseErr) {
   if(mongooseErr) {console.log(mongooseErr)}
   else {console.log('mongoose ACTIVAAAATE!')}
 })
 mongoose.Promise = global.Promise
 
+/* user data */
 // var UserSchema = new mongoose.Schema({
 //   username: {
 //     type:     String,
@@ -68,7 +71,7 @@ var RecSchema = new mongoose.Schema({
     unique:   true,
   },
   triggerType: {
-    type:     String,
+    type:     Array,
     required: true,
   },
   episodeNumber: {
@@ -86,6 +89,7 @@ var RecSchema = new mongoose.Schema({
 })
 var RecModel = mongoose.model('Rec', RecSchema)
 
+/* DB built by scraping */
 var MediaSchema = new mongoose.Schema({
   title: {
     type:     String,
@@ -93,7 +97,7 @@ var MediaSchema = new mongoose.Schema({
     unique:   true,
   },
   triggerType: {
-    type:    String,
+    type:    Array,
     required: true,
   },
   episodeNumber: {
@@ -109,11 +113,14 @@ var MediaSchema = new mongoose.Schema({
     required: false,
   },
 })
-
 var MediaModel = mongoose.model('Media', MediaSchema)
 
 
+
+
+
 /* ST express stuffz */
+
 /* authentication stuff */
 // var checkIfLoggedIn = function(req,res,next) {
 //   if(req.session._id) {
@@ -128,6 +135,10 @@ var MediaModel = mongoose.model('Media', MediaSchema)
 // })
 
 
+
+
+
+
 /* routes */
 app.get('/', function(req,res) {
   res.sendFile('./public/html/index.html', {root:'./'})
@@ -138,25 +149,37 @@ app.get('/search', function(req,res) {
 })
 
 app.post('/search', function(req,res) {
-  console.log('key --- ', req.body, 'value --- ', req.body.title)
+  // console.log('req.body --- ', req.body, 'req.body.title --- ', req.body.title)
 
-  var query = MediaModel.find({'title':req.body.title})
+  var titleString = req.body.title
 
-  query.select(title)
-  query.limit(10)
+  var options = {
+  shouldSort: true,
+  threshold: 0.3,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 32,
+  minMatchCharLength: 1,
+  keys: [
+    "title",
+    "triggerType"
+  ]
+}
 
-  res.send('stuff')
+  MediaModel.find({}, function(err,docs) {
+    if(err) {
+      console.log(err)
+    } else {
+      console.log(docs)
+      var fuse = new Fuse(docs, options); // "list" is the item array
+      var result = fuse.search(req.body.title);
+      //
+      console.log('search result --- ', result)
+      res.send(result)
+    }
+  })
 
-  // MediaModel.find({'title':req.body}, 'trigger', function(err, title) {
-  //   if(err) {
-  //     console.log(err)
-  //     res.send('uh ohhhh')
-  //   } else {
-  //     res.send(title)
-  //   }
-  // })
-
-})
+})  // z app.post('/search')
 
 app.get('/about', function(req,res) {
   res.sendFile('./public/html/about.html', {root:'./'})
@@ -190,6 +213,17 @@ app.post('/recommend', function(req,res) {
 })
 
 
+/* validating recommended entries by moving them from rec to media collection */
+// app.get('/validateEntries', function(req,res) {
+//   res.sendFile('./public/html/validateEntries.html', {root:'./'})
+// })
+// app.post('/validateEntries', function(req,res) {
+//   console.log('req.body --- ', req.body)
+//   // this is where the record will be moved from the reqs collection to the media collection.
+// })
+
+
+/* registering users */
 // app.get('/register', function(req,res) {
 //   res.sendFile('./public/html/register.html', {root:'./'})
 // })
@@ -197,13 +231,14 @@ app.post('/recommend', function(req,res) {
 //   res.sendFile('./public/html/register.html', {root:'./'})
 // }
 
+
+/* logging users in and out */
 // app.get('/login', function(req,res) {
 //   res.sendFile('./public/html/login.html', {root:'./'})
 // })
 // app.post('/login', function(req,res) {
 //   res.sendFile('./public/html/login.html', {root:'./'})
 // })
-
 // app.get('/logout', function(req,res) {
 //   req.session.reset()
 //   res.redirect('/')

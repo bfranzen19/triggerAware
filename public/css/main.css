@@ -44,6 +44,10 @@ h1 {
   box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
 }
 
+#searchBox input:hover {
+  box-shadow: 1px 1px 1px gray;
+}
+
 .recFormItem {
   text-align: center;
   margin-bottom: 0.2rem;
@@ -58,7 +62,6 @@ h1 {
   padding: 0 5rem;
   margin: 0.5rem auto 1rem 22%;
   box-shadow: 1px 1px 1px gray;
-
 }
 
 textarea {
@@ -83,4 +86,13 @@ li {
 #about {
   text-align: left;
   /*margin: auto;*/
+}
+
+#validateEntries {
+  font-family: 'Permanent Marker', cursive;
+
+}
+
+#valBtns {
+  margin: auto;
 }

@@ -73,7 +73,7 @@ var mainVM = new Vue({
 
   methods: {
     recommend: function() {
-      // $.post('/register', this.recForm, function(dataFromServer) {
+      console.log(this.recForm.length)
       $.post('/recommend', this.recForm, function(dataFromServer) {
         console.log('this is data from the server --- ', dataFromServer)
       })
