@@ -35,9 +35,9 @@ var MediaSchema = new mongoose.Schema({
 var MediaModel = mongoose.model('Media', MediaSchema)
 
 // scrapes imdb for keyword
-var keyword = 'slasher'  // imdb search keyword
-var page = '1'  // imdb results page number
-var trigger = 'violence'  // pre-defined trigger type
+var keyword = 'self-mutilation'  // imdb search keyword
+var page = '14'  // imdb results page number
+var trigger = 'self harm'  // pre-defined trigger type
 
 /* scraping stuffz */
 request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=moviemeter,asc&mode=simple&page=${page}&ref_=kw_ref_key`, function(error,response,html) {
