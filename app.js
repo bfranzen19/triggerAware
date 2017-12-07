@@ -31,16 +31,15 @@ var MediaSchema = new mongoose.Schema({
     required: false,
   },
 })
-
 var MediaModel = mongoose.model('Media', MediaSchema)
 
 // scrapes imdb for keyword
-var keyword = 'self-mutilation'  // imdb search keyword
-var page = '14'  // imdb results page number
-var trigger = 'self harm'  // pre-defined trigger type
+var keyword = ''  // imdb search keyword
+var page = '1'  // imdb results page number
+var trigger = ''  // pre-defined trigger type
 
-/* scraping stuffz */
-request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=moviemeter,asc&mode=simple&page=${page}&ref_=kw_ref_key`, function(error,response,html) {
+/* scraping stuffz --- updates db by release date */
+request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=release_date,desc&mode=simple&page=${page}&ref_=kw_ref_key`, function(error,response,html) {
   var $ = cheerio.load(html)
   var a = $('span.lister-item-index').next()
   var titles = []
@@ -66,52 +65,10 @@ request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=moviemeter,
             return docs
           }
         })
-
       } else {
         console.log('saved --- ', docs)
         return docs
       }
-
     })
   }
 })
-
-
-
-// clear out the DB
-// MediaModel.remove({})
-
-
-
-// update the existing db
-// var updateDB = function() {
-//   request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=release_date,asc&mode=simple&page=${page}&ref_=kw_ref_key`, function(error,response,html) {
-//     var $ = cheerio.load(html)
-//     var a = $('span.lister-item-index').next()
-//     var titles = []
-//     $(a).each(function(i, link) {
-//       titles.push($(this).text().replace(/\n/g, '').trim().split('    '))
-//       // console.log(titles)
-//     })
-//     // console.log(titles.length)
-//
-//     for(var i=0 ; i<titles.length ; i++) {
-//       MediaModel.create({title: titles[i], triggerType: `${trigger}`}, function(err,docs) {
-//         // if(MediaModel.title === titles[i]) {
-//         //   MediaModel.triggerType.push(titles.triggerType)
-//         //   console.log(titles[i], 'added to DB')
-//         // } else {
-//           if(err) {
-//             console.log(err)
-//             return err
-//           } else {
-//             console.log('saved --- ', docs)
-//             return docs
-//           }
-//
-//         // }
-//
-//       })
-//     }
-//   })
-// }

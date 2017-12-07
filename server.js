@@ -3,17 +3,14 @@ var mongoose = require('mongoose')
 var emailType = require('mongoose-type-email')
 var bodyParser = require('body-parser')
 
-/* web scraping */
-var request = require('request')
-var cheerio = require('cheerio')
 
 /* search */
 var Fuse = require('fuse.js')
 
 /* login */
-// var bcrypt = require('bcryptjs')
-// var sessionsModule = require('client-sessions')
-// var secrets = require('./public/js/secrets.js')
+var bcrypt = require('bcryptjs')
+var sessionsModule = require('client-sessions')
+var secrets = require('./secrets.js')
 
 var app = express()
 
@@ -23,16 +20,16 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('./public'))
 
 /* sessions */
-// var sessionsMiddleware = sessionsModule({
-//   cookieName: 'TriggerAware',
-//   secret: secrets.cookieSecret,
-//   duration: 86400 * 1000 * 7,
-//   cookie: {
-//     httpOnly: true,
-//     secure: false,
-//   }
-// })
-// app.use(sessionsMiddleware)
+var sessionsMiddleware = sessionsModule({
+  cookieName: 'TriggerAware',
+  secret: secrets.cookieSecret,
+  duration: 86400 * 1000 * 7,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  }
+})
+app.use(sessionsMiddleware)
 
 /* ST database stuffz - mongoose connection */
 mongoose.connect('mongodb://localhost:27017/TriggerAware', {useMongoClient:true}, function(mongooseErr) {
@@ -178,7 +175,7 @@ app.post('/search', function(req,res) {
       res.send(result)
     }
   })
- 
+
 })  // z app.post('/search')
 
 app.get('/about', function(req,res) {

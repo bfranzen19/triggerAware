@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title> TriggerAware </title>
 <!-- vue -->
   <script src="https://unpkg.com/vue"></script>
 <!-- jQ -->
@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="/css/main.css"/>
 <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Acme|Boogaloo|Oswald|Passion+One" rel="stylesheet">
+<!-- favicon -->
+  <link rel="icon" type="image/png" href="/img/favicomatic/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/img/favicomatic/favicon-16x16.png" sizes="16x16" />
 </head>
 
 <body>
@@ -27,14 +30,47 @@
     </div>
 
 
-<!-- search div -->
+<!-- search by title div -->
     <div class="container">
       <div id="search" class="row col-xs-12">
-
         <form v-on:submit.prevent="searchDB">
           <div id="searchBox">
             <input v-model="searchQuery" type="text" name="inputBox" size=24>
             <input type="submit" value="search">
+          </div>
+        </form>
+      </div>
+    </div>
+
+<!-- search by trigger div -->
+    <div class="container">
+      <div id="checkBox" class="row col-xs-12">
+        <form v-on:submit.prevent="searchDB">
+          <div>
+            <div>
+              <input type="checkbox" name="sexBox" class="checkBoxItems">
+              <label for='sexBox'> sex </label>
+            </div>
+            <div>
+              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <label for='warBox'> war </label>
+            </div>
+            <div>
+              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <label for='violenceBox'> violence </label>
+            </div>
+            <div>
+              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <label for='lossBox'> loss </label>
+            </div>
+            <div>
+              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <label for='selfHarmBox'> self harm </label>
+            </div>
+            <div id="checkBoxBtn">
+              <input type="submit" value="search">
+            </div>
+
           </div>
         </form>
       </div>
