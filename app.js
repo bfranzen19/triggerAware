@@ -35,10 +35,11 @@ var MediaSchema = new mongoose.Schema({
 var MediaModel = mongoose.model('Media', MediaSchema)
 
 // scrapes imdb for keyword
-var keyword = 'suicide'  // imdb search keyword
+var keyword = 'slasher'  // imdb search keyword
 var page = '1'  // imdb results page number
-var trigger = 'self harm'  // pre-defined trigger type
+var trigger = 'violence'  // pre-defined trigger type
 
+/* scraping stuffz */
 request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=moviemeter,asc&mode=simple&page=${page}&ref_=kw_ref_key`, function(error,response,html) {
   var $ = cheerio.load(html)
   var a = $('span.lister-item-index').next()
@@ -46,10 +47,8 @@ request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=moviemeter,
   $(a).each(function(i, link) {
     titles.push($(this).text().replace(/\n/g, '').trim().split('    '))
   })
-  // console.log(titles.length)
   console.log(titles)
 
-  // for(var i=0 ; i<titles.length ; i++) {
   for(let title of titles) {
     MediaModel.create(
       { title : title[0], triggerType : trigger },
@@ -66,7 +65,7 @@ request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=moviemeter,
             console.log('saved --- ', docs)
             return docs
           }
-      })
+        })
 
       } else {
         console.log('saved --- ', docs)

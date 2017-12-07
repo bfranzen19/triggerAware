@@ -68,7 +68,7 @@ var mainVM = new Vue({
     },
 
     searchQuery:'' ,
-    searchResults: '',
+    searchResults: {},
   },
 
   methods: {
@@ -84,8 +84,11 @@ var mainVM = new Vue({
       console.log(this.searchQuery)
        $.post('/search',{title: this.searchQuery}, function(dataFromServer) {
         console.log('this is data from the server --- ', dataFromServer)
+        // mainVM.searchResults = dataFromServer
+        console.log('title: ', dataFromServer[0].title, 'triggerType: ', dataFromServer[0].triggerType[0])
       })
-      mainVM.searchQuery = ''
+      // mainVM.searchQuery = ''
+      // console.log(`i'm mr meseeks `, dataFromServer[0].title)
     },
 
     // login: function() {
