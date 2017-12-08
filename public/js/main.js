@@ -1,10 +1,14 @@
 console.log('js is linked, yo')
 
+// scrolling
+import vueScrollto from 'vue-scrollto'
+Vue.use(vueScrollto)
+
 Vue.component('main-nav', {
   template: `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-      <a class="navbar-brand" href="/"> TriggerAware </a>
+      <a class="navbar-brand" href="/" id="brand"> TriggerAware </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,6 +34,20 @@ Vue.component('main-footer', {
   template: `
     <footer> site designed and maintained by bt franzen </footer>
   `,
+})
+
+Vue.component('search-results', {
+  template: `
+
+    <div class="card border-danger mb-3" style="max-width: 100%;">
+      <div id="resultsTitle" class="card-header"> {{title}} </div>
+        <div class="card-body text-danger" id="triggerBox">
+          <p id="resultsTrigger" class="card-text"> {{trigger}} </p>
+        </div>
+    </div>
+
+  `,
+  props: ['title', 'trigger']
 })
 
 var mainVM = new Vue({
@@ -61,6 +79,7 @@ var mainVM = new Vue({
       triggerType: '',
     }],
 
+    visible: true,
 
   },
 
@@ -113,7 +132,6 @@ var mainVM = new Vue({
               triggerType: dataFromServer[item].triggerType.join(', ')
             })
           }
-
         })
       }
 

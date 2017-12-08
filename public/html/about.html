@@ -11,7 +11,7 @@
 <!-- main CSS -->
   <link rel="stylesheet" href="/css/main.css"/>
 <!-- google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Acme|Boogaloo|Oswald|Passion+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Acme|Boogaloo|Oswald|Passion+One" rel="stylesheet">
 <!-- favicon -->
   <link rel="icon" type="image/png" href="/img/favicomatic/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/img/favicomatic/favicon-16x16.png" sizes="16x16" />
@@ -22,42 +22,240 @@
     <main-nav></main-nav>
 
 <!-- main content -->
-    <div class="container">
-      <div id="main-content" class="row col-xs-12">
-  <!-- about content -->
-        <div class="container">
-          <div id="main-content" class="row col-xs-12">
-            <h1>TriggerAware</h1>
-            <div id="about">
-              <h3> About TriggerAware </h3>
-                <p>
-                  stuff about this site
-                </p>
-                  more stuff about it
-                <p>
-
-                </p>
-            </div>
-          </div>
-  <!-- how it works -->
       <div class="container">
-        <div class="row col-xs-12">
-          <h1> How This Application Works </h1>
-            <p>
+        <div id="main-content" class="row col-xs-12">
+          <h1>TriggerAware</h1>
+          <div id="tabs">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="#main-content">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#howItWorks">How It Works</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#db">The Database</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#triggers">Trigger Types</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#searchContainer">Try It</a>
+              </li>
+            </ul>
+          </div>
 
-            </p>
-          <h3> Our Database </h3>
-            <p>
 
-            </p>
 
-          <h3> The Trigger Types </h3>
-            <p>
+  <!-- about content -->
+        <div class="container-fluid">
+          <div id="main-content" class="row col-xs-12">
+            <div class="about">
+              <div id="accordion" role="tablist">
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="mb-0">
+                      <div data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        PURPOSE
+                      </div>
+                    </h5>
+                  </div>
+                  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      The purpose of TriggerAware is to give survivors of traumatic events the ability to search a movie or tv title and ascertain whether or not the content may trigger them.
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <div class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        WHAT IS A TRIGGER? WHY DOES IT MATTER?
+                      </div>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                      A trigger is the term used for an external stimuli that sets off a flashback. A flashback is an involuntary, recurrent memory. It's a powerful and terrifying ordeal in which the person is forced to relive an experience/memory. <br/><br/>
+                      Why does this matter? Recovering from PTSD and traumatic events is often daunting and difficult. A flashback, or getting "activated" can bring feelings of hopelessness and like you are losing control of your life, particularly on a bad day. Anniversaries of events, other factors, and life in general can exasperate symptoms and can push you into depression.
+                      <br/><br/>
+                      This application aims to give the control of what you hear and see back to the user. You can avoid the triggers completely or watch the tv/movie tenatively. You are in control.
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingThree">
+                    <h5 class="mb-0">
+                      <div class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        NEED HELP?
+                      </div>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                      There's no shame in getting the help you deserve. You've been through enough.
+                      <div id="helpButtons">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Symptoms
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.mayoclinic.org/diseases-conditions/post-traumatic-stress-disorder/symptoms-causes/syc-20355967" target="_blank"> Signs and symptoms of PTSD (Mayo Clinic) </a>
+                            <a class="dropdown-item" href="https://www.helpguide.org/articles/ptsd-trauma/ptsd-symptoms-self-help-treatment.htm" target="_blank"> Signs and symptoms of PTSD (helpguide.org) </a>
+                            <a class="dropdown-item" href="https://www.ptsd.va.gov/" target="_blank"> Veterans - The VA can help </a>
+                          </div>
+                        </div>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Learn More / Treatment
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://adaa.org/understanding-anxiety/posttraumatic-stress-disorder-ptsd/treatment" target="_blank"> Anxiety and Depression Association of America </a>
+                            <a class="dropdown-item" href="https://www.psychiatry.org/patients-families/ptsd" target="_blank"> American Psychiatric Association </a>
+                            <a class="dropdown-item" href="https://www.psychguides.com/guides/post-traumatic-stress-disorder-treatment-program-options/" target="_blank"> PTSD Treatment Options </a>
+                          </div>
+                        </div>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Get Help
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.psychologytoday.com/" target="_blank"> Find a mental health professional </a>
+                            <a class="dropdown-item" href="https://www.psychguides.com/guides/how-to-help-someone-with-post-traumatic-stress-disorder/" target="_blank"> Help someone else with PTSD </a>
+                            <a class="dropdown-item" href="https://suicidepreventionlifeline.org/" target="_blank"> Suicide Prevention Lifeline </a>
+                          </div>
+                        </div>
+                      </div>  <!-- z helpButtons -->
 
-            </p>
+                    </div>
+                  </div>
+                </div>
 
-        </div>
-      </div>  <!-- z how-it-works -->
+              </div>
+              <span id="toTop"><a href="#">return to top</a></span>
+            </div>
+          </div> <hr/><br/><br/>
+
+  <!-- how it works -->
+          <div class="container">
+            <div class="row col-xs-12">
+              <div id="howItWorks"><br/>
+                <h1> How This Application Works </h1>
+                  <p>
+                    This application queries our database using a "fuzzy search" and returns similar titles or trigger types. The results of the search print out on the screen showing the title and all trigger types associated with each title.
+                  </p>
+
+                  <span id="toTop"><a href="#">return to top</a></span>
+              </div><br/><br/><br/>
+              <div id="db"><br/>
+                <h3> Our Database </h3>
+                  <p>
+                    Our database was built using keword results on<a href="http://www.imdb.com/search/keyword">IMDB</a>. There are six different<a href="#triggers">Trigger Types</a> that are comprised of numerous different IMDB keywords. Each Trigger Type is named in a way to convey the overall idea of which keywords are included but without making anyone read words that may trigger them.
+                  </p>
+                  <span id="toTop"><a href="#">return to top</a></span>
+              </div><br/><br/><br/>
+              <div id="triggers"><br/>
+                <h3> The Trigger Types </h3>
+                  <p id="warning">
+                    <b>WARNING</b>: Clicking each Trigger Type below will reveal the IMDB keywords used to build that Trigger Type in our database. Some of these words may trigger you. Please click with caution!
+                  </p>
+
+                <div id="triggerButtons">
+                  <ul>
+                    <li class="triggerButtonItem">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-info">Trigger Type: Sex </button>
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                          <a class="dropdown-item"> R*pe </a>
+                          <a class="dropdown-item"> Sexual Assault </a>
+                          <a class="dropdown-item"> Sexual Violence </a>
+                          <a class="dropdown-item"> Sex </a>
+                        </div>
+                      </div>
+                    <!-- </li>
+                    <li class="triggerButtonItem"> -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-info">Trigger Type: War </button>
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                          <a class="dropdown-item"> Shootout </a>
+                          <a class="dropdown-item"> Explosion </a>
+                          <a class="dropdown-item"> Combat </a>
+                        </div>
+                      </div>
+                    <!-- </li>
+                    <li class="triggerButtonItem"> -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-info">Trigger Type: Violence </button>
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                          <a class="dropdown-item"> Slasher </a>
+                          <a class="dropdown-item"> Blood </a>
+                          <a class="dropdown-item"> Murder </a>
+                          <a class="dropdown-item"> Violence </a>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="triggerButtonItem">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-info">Trigger Type: Loss </button>
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                          <a class="dropdown-item"> Loss </a>
+                          <a class="dropdown-item"> Death </a>
+                          <a class="dropdown-item"> Grief </a>
+                        </div>
+                      </div>
+                    <!-- </li>
+                    <li class="triggerButtonItem"> -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-info">Trigger Type: Self Harm </button>
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                          <a class="dropdown-item"> Suicide </a>
+                          <a class="dropdown-item"> Eating Disorder </a>
+                          <a class="dropdown-item"> Self Mutilation </a>
+                          <a class="dropdown-item"> Cutting </a>
+                          <a class="dropdown-item"> Self Harm </a>
+                        </div>
+                      </div>
+                    <!-- </li>
+                    <li class="triggerButtonItem"> -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-info">Trigger Type: Child Abuse </button>
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item"><em> IMDB Keyword: </em></a>
+                          <a class="dropdown-item"> Child Abuse </a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>  <!-- z triggerButtons -->
+
+                <br/><br/>
+                  <span id="toTop"><a href="#">return to top</a></span>
+              </div><br/><br/>
+            </div>
+          </div>  <!-- z how-it-works -->
 
         </div>
       </div>  <!-- z main-content -->
@@ -66,26 +264,24 @@
 
 
 
-
+<br/><hr/><br/>
 
 <!-- search div -->
+  <br/><br/>
     <div class="container">
-      <div id="search" class="row col-xs-12">
-        <a href="/search"> search our database </a>
+      <div id="searchContainer" class="row col-xs-12">
+        <p>
+          Want to try it out? <a href="/search"> Search the database! </a>
+        </p>
       </div>
     </div>
 
-<!-- register div -->
-    <!-- <div class="container-fluid">
-      <div id="register" class="row col-xs-12">
-        <a href="/register"> become a member </a>
-      </div>
-    </div> -->
-
 <!-- footer div -->
+  <br/><br/>
     <div id="footer">
       <main-footer></main-footer>
     </div>
+
   </div>  <!-- z app -->
 
 <!-- bootstrap -->

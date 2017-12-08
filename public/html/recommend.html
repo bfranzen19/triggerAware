@@ -22,11 +22,12 @@
   <div id="app">
 
     <main-nav></main-nav>
+    <h1 class="headers"> recommend a triggering scene </h1>
 
 <!-- main content -->
     <div class="container">
       <div class="row col-xs-12 col-xl-12">
-        <h1> recommend a triggering scene </h1>
+
         <form id="recForm" v-on:submit.prevent="recommend">
           <div>
             <input class="recFormItem" type="text" placeholder="enter your email (required)" size="50" v-model="recForm.userEmail"/>
