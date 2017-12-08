@@ -11,14 +11,13 @@ Vue.component('main-nav', {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/about"> about <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/about"> about us <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/search"> search <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/search"> search our database <span class="sr-only">(current)</span></a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="/recommend"> recommend a scene </a>
+            <a class="nav-link" href="/recommend"> recommend a triggering scene </a>
           </li>
 
         </ul>
@@ -32,18 +31,6 @@ Vue.component('main-footer', {
     <footer> site designed and maintained by bt franzen </footer>
   `,
 })
-
-// Vue.component('search-thing', {
-//   template: `
-//     <form>
-//       <div id="searchBox">
-//         <input type="text" name="inputBox" size=24>
-//         <input type="submit" value="search">
-//       </div>
-//     </form>
-//   `,
-// })
-
 
 var mainVM = new Vue({
   el: '#app',
@@ -67,29 +54,72 @@ var mainVM = new Vue({
       description: '',
     },
 
-    searchQuery:'' ,
-    searchResults: {},
+    searchTitle: '',
+    searchQuery: [],
+    searchResults: [{
+      title: '',
+      triggerType: '',
+    }],
+
+
   },
 
   methods: {
     recommend: function() {
       console.log(this.recForm.length)
-      $.post('/recommend', this.recForm, function(dataFromServer) {
-        console.log('this is data from the server --- ', dataFromServer)
-      })
+      if(!$.trim(this.recForm.userEmail || this.recForm.title || this.recForm.triggerType)) {
+        alert('please enter required information')
+      } else {
+        $.post('/recommend', this.recForm, function(dataFromServer) {
+          console.log('this is data from the server --- ', dataFromServer)
+        })
+      }
       mainVM.recForm = ""
     },
 
-    searchDB: function() {
-      console.log(this.searchQuery)
-       $.post('/search',{title: this.searchQuery}, function(dataFromServer) {
+    searchDBtitle: function() {
+      if(!$.trim(this.searchTitle)) {
+        alert('please enter a movie title or a trigger type')
+      } else {
+       $.post('/searchTitle',{title: this.searchTitle}, function(dataFromServer) {
         console.log('this is data from the server --- ', dataFromServer)
-        // mainVM.searchResults = dataFromServer
-        console.log('title: ', dataFromServer[0].title, 'triggerType: ', dataFromServer[0].triggerType[0])
-      })
-      // mainVM.searchQuery = ''
-      // console.log(`i'm mr meseeks `, dataFromServer[0].title)
+
+          for(let item in dataFromServer) {
+            mainVM.searchResults.push({
+              title: dataFromServer[item].title,
+              triggerType: dataFromServer[item].triggerType.join(', ')
+            })
+          }
+
+        })
+      }
+      mainVM.searchTitle = ""
     },
+
+  // this doesn't work (yet)
+    searchDBtrigger: function() {
+      if(!$.trim(this.searchQuery)) {
+        alert('please enter a movie title or a trigger type')
+      } else {
+      triggerQuery = this.searchQuery.join(', ')
+      console.log(triggerQuery)
+
+       $.post('/searchTrigger',{triggerType: triggerQuery}, function(dataFromServer) {
+        console.log('this is data from the server --- ', dataFromServer)
+
+          for(let item in dataFromServer) {
+            mainVM.searchResults.push({
+              title: dataFromServer[item].title,
+              triggerType: dataFromServer[item].triggerType.join(', ')
+            })
+          }
+
+        })
+      }
+
+      mainVM.searchQuery = ""
+    },
+
 
     // login: function() {
     //   $.post('/login', this.loginForm, function(dataFromServer) {

@@ -28,8 +28,25 @@ body {
 }
 
 h1 {
-  margin: 0px auto 1rem auto;
+  margin: 0px auto 2rem auto;
+  text-align: center;
 }
+
+h3 {
+  font-style: italic;
+  margin: 0px auto 1rem 3rem;
+}
+
+a {
+  margin: 0px auto 1rem 1rem;
+  padding: 0;
+  display: inline;
+}
+
+#aboutTriggerTypes {
+  font-size: 1rem;
+}
+
 
 #search {
   text-align: center;
@@ -54,15 +71,16 @@ h1 {
   margin: auto;
   padding: 2rem;
   box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
+  width: 367px;
 }
 
 #checkBoxBtn {
-  margin-left: auto;
-  margin-top: 10px;
+  margin-left: 40%;
+  margin-top: 15px;
 }
 
 #checkBoxItems {
-  margin-left: 10px;
+  margin: 3px auto 7px 3rem;
 }
 
 .recFormItem {
@@ -97,7 +115,34 @@ li {
 }
 
 #results {
-  padding: 1rem;
+  text-align: center;
+  padding: 0;
+  border: 1px solid blue;
+  width: 500px;
+}
+
+/*#resultsReadout {
+  font-size: 1rem;
+  margin-left: 2rem;
+}*/
+
+#resultsList {
+  text-align: justify;
+  margin: 0.5rem auto .25rem 1rem;
+  border: 2px solid green;
+  width: 500px;
+}
+
+#resultsTitle{
+  border: 1px dotted purple;
+  background-color: #dedede;
+  width: 100%;
+  /*margin: 0.5rem auto 0.25 3rem;*/
+  margin: auto;
+}
+
+#resultsTrigger {
+  border: 1px dotted red;
 }
 
 #about {

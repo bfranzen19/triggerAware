@@ -2,6 +2,7 @@
 <html>
 <head>
   <title> TriggerAware </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- vue -->
   <script src="https://unpkg.com/vue"></script>
 <!-- jQ -->
@@ -25,46 +26,52 @@
 <!-- main content -->
     <div class="container">
       <div class="row col-xs-12">
-        <h1> search by title </h1>
+        <h1> Search Our Database </h1>
       </div>
     </div>
 
-
 <!-- search by title div -->
+    <h3> Search by Title </h3>
     <div class="container">
       <div id="search" class="row col-xs-12">
-        <form v-on:submit.prevent="searchDB">
+
+        <form v-on:submit.prevent="searchDBtitle">
           <div id="searchBox">
-            <input v-model="searchQuery" type="text" name="inputBox" size=24>
+            <input v-model="searchTitle" type="text" name="inputBox" size=24>
             <input type="submit" value="search">
           </div>
         </form>
+
       </div>
     </div>
 
+
 <!-- search by trigger div -->
+    <h3> Search by Trigger Type  <span id="aboutTriggerTypes"><a href="/about">
+      (about trigger types) </a></span> </h3>
     <div class="container">
       <div id="checkBox" class="row col-xs-12">
-        <form v-on:submit.prevent="searchDB">
+
+        <form v-on:submit.prevent="searchDBtrigger">
           <div>
             <div>
-              <input type="checkbox" name="sexBox" class="checkBoxItems">
+              <input type="checkbox" name="sexBox" class="checkBoxItems" value="sex" v-model="searchQuery">
               <label for='sexBox'> sex </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <input type="checkbox" name="inputBox" class="checkBoxItems" value="war" v-model="searchQuery">
               <label for='warBox'> war </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <input type="checkbox" name="inputBox" class="checkBoxItems" value="violence" v-model="searchQuery">
               <label for='violenceBox'> violence </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <input type="checkbox" name="inputBox" class="checkBoxItems" value="loss" v-model="searchQuery">
               <label for='lossBox'> loss </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems">
+              <input type="checkbox" name="inputBox" class="checkBoxItems" value="self harm" v-model="searchQuery">
               <label for='selfHarmBox'> self harm </label>
             </div>
             <div id="checkBoxBtn">
@@ -73,22 +80,36 @@
 
           </div>
         </form>
+
       </div>
     </div>
 
 
-
+<br /><br /><hr />
 <!-- results div -->
-    <!-- <div class="container">
+    <div class="container-fluid">
       <div id="results" class="row col-xs-12">
-        <h3> search results: </h3>
-        <div>
+        <h3> search results: </h3><br/>
+      </div>
+        <div class="row col-xs-12">
           <ul>
-            <li>  </li>
+            <div class="container-fluid">
+              <li v-for="item in searchResults" id="resultsList">
+                <span id="resultsTitle">
+                  Title:  {{item.title}} <br/>
+                </span>
+                <span id="resultsTrigger">
+                  Trigger Type(s):  {{item.triggerType}} <br/><br/>
+                </span>
+
+              </li>
+            </div>
           </ul>
         </div>
       </div>
-    </div> -->
+    </div>
+
+
 
 
 

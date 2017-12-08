@@ -113,9 +113,6 @@ var MediaSchema = new mongoose.Schema({
 var MediaModel = mongoose.model('Media', MediaSchema)
 
 
-
-
-
 /* ST express stuffz */
 
 /* authentication stuff */
@@ -134,8 +131,6 @@ var MediaModel = mongoose.model('Media', MediaSchema)
 
 
 
-
-
 /* routes */
 app.get('/', function(req,res) {
   res.sendFile('./public/html/index.html', {root:'./'})
@@ -145,23 +140,22 @@ app.get('/search', function(req,res) {
   res.sendFile('./public/html/search.html', {root:'./'})
 })
 
-app.post('/search', function(req,res) {
+app.post('/searchTitle', function(req,res) {
   // console.log('req.body --- ', req.body, 'req.body.title --- ', req.body.title)
 
   var titleString = req.body.title
 
   var options = {
-  shouldSort: true,
-  threshold: 0.3,
-  location: 0,
-  distance: 100,
-  maxPatternLength: 32,
-  minMatchCharLength: 1,
-  keys: [
-    "title",
-    "triggerType"
-  ]
-}
+    shouldSort: true,
+    threshold: 0.3,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: [
+      "title",
+    ]
+  }
 
   MediaModel.find({}, function(err,docs) {
     if(err) {
@@ -170,13 +164,50 @@ app.post('/search', function(req,res) {
       console.log(docs)
       var fuse = new Fuse(docs, options); // "list" is the item array
       var result = fuse.search(req.body.title);
-      //
-      console.log('search result --- ', result)
+
+      console.log('title search result --- ', result)
+
       res.send(result)
     }
   })
 
-})  // z app.post('/search')
+})  // z app.post('/searchTitle')
+
+
+app.post('/searchTrigger', function(req,res) {
+  // console.log('req.body --- ', req.body, 'req.body.title --- ', req.body.title)
+  console.log(req.body.triggerType)
+
+  // var triggerString = req.body.triggerType
+
+  var options = {
+    shouldSort: true,
+    threshold: 0.3,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: [
+      "triggerType"
+    ]
+  }
+
+  MediaModel.find({}, function(err,docs) {
+    if(err) {
+      console.log(err)
+    } else {
+      console.log(docs)
+      var fuse = new Fuse(docs, options);
+      var result = fuse.search(req.body.triggerType);
+
+      console.log('trigger search result --- ', result)
+
+      res.send(result)
+    }
+  })
+})  // z app.post('/searchTrigger')
+
+
 
 app.get('/about', function(req,res) {
   res.sendFile('./public/html/about.html', {root:'./'})

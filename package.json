@@ -35,6 +35,7 @@
     "mongoose-text-search": "0.0.2",
     "mongoose-type-email": "^1.0.5",
     "nightmare": "^2.10.0",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "vue-scrollto": "^2.8.0"
   }
 }
