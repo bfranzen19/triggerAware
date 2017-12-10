@@ -175,36 +175,35 @@ app.post('/searchTitle', function(req,res) {
 
 
 app.post('/searchTrigger', function(req,res) {
-  // console.log('req.body --- ', req.body, 'req.body.title --- ', req.body.title)
   console.log(req.body.triggerType)
+  res.send('got some shit')
 
-  // var triggerString = req.body.triggerType
-
-  var options = {
-    shouldSort: true,
-    threshold: 0.3,
-    location: 0,
-    distance: 100,
-    maxPatternLength: 32,
-    minMatchCharLength: 1,
-    keys: [
-      "triggerType"
-    ]
-  }
-
-  MediaModel.find({}, function(err,docs) {
-    if(err) {
-      console.log(err)
-    } else {
-      console.log(docs)
-      var fuse = new Fuse(docs, options);
-      var result = fuse.search(req.body.triggerType);
-
-      console.log('trigger search result --- ', result)
-
-      res.send(result)
-    }
-  })
+  // var options = {
+  //   shouldSort: true,
+  //   threshold: 0.3,
+  //   location: 0,
+  //   distance: 100,
+  //   maxPatternLength: 32,
+  //   minMatchCharLength: 1,
+  //   keys: [
+  //     "triggerType"
+  //   ]
+  // }
+  //
+  //
+  // MediaModel.find({}, function(err,docs) {
+  //   if(err) {
+  //     console.log(err)
+  //   } else {
+  //     console.log(docs)
+  //     var fuse = new Fuse(docs, options);
+  //     var result = fuse.search(req.body.triggerType);
+  //
+  //     console.log('trigger search result --- ', result)
+  //
+  //     res.send(result)
+  //   }
+  // })
 })  // z app.post('/searchTrigger')
 
 
@@ -242,13 +241,13 @@ app.post('/recommend', function(req,res) {
 
 
 /* validating recommended entries by moving them from rec to media collection */
-// app.get('/validateEntries', function(req,res) {
-//   res.sendFile('./public/html/validateEntries.html', {root:'./'})
-// })
-// app.post('/validateEntries', function(req,res) {
-//   console.log('req.body --- ', req.body)
-//   // this is where the record will be moved from the reqs collection to the media collection.
-// })
+app.get('/validateEntries', function(req,res) {
+  res.sendFile('./public/html/validateEntries.html', {root:'./'})
+})
+app.post('/validateEntries', function(req,res) {
+  console.log('req.body --- ', req.body)
+  // this is where the record will be moved from the reqs collection to the media collection.
+})
 
 
 /* registering users */

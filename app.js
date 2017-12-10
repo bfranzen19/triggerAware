@@ -31,12 +31,12 @@ var MediaSchema = new mongoose.Schema({
     required: false,
   },
 })
-var MediaModel = mongoose.model('Media', MediaSchema)
+var MediaModel = mongoose.model('Media1', MediaSchema)
 
 // scrapes imdb for keyword
-var keyword = ''  // imdb search keyword
+var keyword = 'murder'  // imdb search keyword
 var page = '1'  // imdb results page number
-var trigger = ''  // pre-defined trigger type
+var trigger = 'violence'  // pre-defined trigger type
 
 /* scraping stuffz --- updates db by release date */
 request(`http://www.imdb.com/search/keyword?keywords=${keyword}&sort=release_date,desc&mode=simple&page=${page}&ref_=kw_ref_key`, function(error,response,html) {

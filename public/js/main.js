@@ -1,9 +1,5 @@
 console.log('js is linked, yo')
 
-// scrolling
-import vueScrollto from 'vue-scrollto'
-Vue.use(vueScrollto)
-
 Vue.component('main-nav', {
   template: `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,7 +34,6 @@ Vue.component('main-footer', {
 
 Vue.component('search-results', {
   template: `
-
     <div class="card border-danger mb-3" style="max-width: 100%;">
       <div id="resultsTitle" class="card-header"> {{title}} </div>
         <div class="card-body text-danger" id="triggerBox">
@@ -50,14 +45,12 @@ Vue.component('search-results', {
   props: ['title', 'trigger']
 })
 
+
+
+
 var mainVM = new Vue({
   el: '#app',
   data: {
-    // registerForm: {
-    //   username: '',
-    //   password: '',
-    // },
-    //
     // loginForm: {
     //   username: '',
     //   password: '',
@@ -73,13 +66,26 @@ var mainVM = new Vue({
     },
 
     searchTitle: '',
-    searchQuery: [],
+
+    searchQuery: {
+      sex: '',
+      war: '',
+      violence: '',
+      loss: '',
+      selfHarm: '',
+      childAbuse: '',
+    },
+
     searchResults: [{
       title: '',
       triggerType: '',
     }],
 
     visible: true,
+
+    recordsFound: [],
+
+    loading: false,
 
   },
 
@@ -101,16 +107,22 @@ var mainVM = new Vue({
         alert('please enter a movie title or a trigger type')
       } else {
        $.post('/searchTitle',{title: this.searchTitle}, function(dataFromServer) {
-        console.log('this is data from the server --- ', dataFromServer)
-
+         console.log('this is data from the server --- ', dataFromServer)
+          if(dataFromServer.length === 0) {
+            mainVM.searchResults.push({
+              title: 'No results found',
+              triggerType: 'This title may be safe'
+          })
+        } else {
           for(let item in dataFromServer) {
+            mainVM.recordsFound = dataFromServer.length
             mainVM.searchResults.push({
               title: dataFromServer[item].title,
               triggerType: dataFromServer[item].triggerType.join(', ')
             })
           }
-
-        })
+        }
+          })
       }
       mainVM.searchTitle = ""
     },
@@ -120,12 +132,20 @@ var mainVM = new Vue({
       if(!$.trim(this.searchQuery)) {
         alert('please enter a movie title or a trigger type')
       } else {
-      triggerQuery = this.searchQuery.join(', ')
+
+
+
+      triggerQuery = this.searchQuery//.join(', ')
       console.log(triggerQuery)
 
        $.post('/searchTrigger',{triggerType: triggerQuery}, function(dataFromServer) {
         console.log('this is data from the server --- ', dataFromServer)
-
+          if(dataFromServer.length === 0) {
+            mainVM.searchResults.push({
+              title: 'No results found',
+              triggerType: 'This title is safe'
+            })
+          }
           for(let item in dataFromServer) {
             mainVM.searchResults.push({
               title: dataFromServer[item].title,
@@ -134,7 +154,6 @@ var mainVM = new Vue({
           }
         })
       }
-
       mainVM.searchQuery = ""
     },
 

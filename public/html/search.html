@@ -16,6 +16,8 @@
 <!-- favicon -->
   <link rel="icon" type="image/png" href="/img/favicomatic/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/img/favicomatic/favicon-16x16.png" sizes="16x16" />
+<!-- font awesome -->
+  <script src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 </head>
 
 <body>
@@ -28,6 +30,7 @@
       <div class="row col-xs-12">
         <h1 class="headers"> Search Our Database </h1>
       </div>
+      <hr/><br/>
 
 
 <!-- search by title div -->
@@ -55,28 +58,33 @@
       <div class="row col-xs-12">
         <div  id="checkBox">
 
-        <form v-on:submit.prevent="searchDBtrigger" v-on:submit="visible = !visible">
+        <form v-on:submit.prevent="searchDBtrigger" v-on:submit="visible = !visible" >
           <div>
             <div>
-              <input type="checkbox" name="sexBox" class="checkBoxItems" value="sex" v-model="searchQuery">
+              <input type="checkbox" name="sexBox" class="checkBoxItems" value="sex" v-model="searchQuery.sex">
               <label for='sexBox'> sex </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems" value="war" v-model="searchQuery">
+              <input type="checkbox" name="warBox" class="checkBoxItems" value="war" v-model="searchQuery.war">
               <label for='warBox'> war </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems" value="violence" v-model="searchQuery">
+              <input type="checkbox" name="violenceBox" class="checkBoxItems" value="violence" v-model="searchQuery.violence">
               <label for='violenceBox'> violence </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems" value="loss" v-model="searchQuery">
+              <input type="checkbox" name="lossBox" class="checkBoxItems" value="loss" v-model="searchQuery.loss">
               <label for='lossBox'> loss </label>
             </div>
             <div>
-              <input type="checkbox" name="inputBox" class="checkBoxItems" value="self harm" v-model="searchQuery">
+              <input type="checkbox" name="selfHarmBox" class="checkBoxItems" value="self harm" v-model="searchQuery.selfHarm">
               <label for='selfHarmBox'> self harm </label>
             </div>
+            <div>
+              <input type="checkbox" name="childAbuseBox" class="checkBoxItems" value="self harm" v-model="searchQuery.childAbuse">
+              <label for='childAbuseBox'> self harm </label>
+            </div>
+
             <div id="checkBoxBtn">
               <input type="submit" value="search">
             </div>
@@ -84,6 +92,7 @@
           </div>
 
         </form>
+          {{searchQuery}}
         </div>
 
       </div>
@@ -93,7 +102,9 @@
 <br /><br /><hr />
 <!-- results div -->
 
+
       <div v-bind:class="{showResults: visible}" >
+        <h2 class="headers"> Search Results: {{recordsFound}} records found</h2>
         <div v-for="item in searchResults">
           <search-results v-bind:title="item.title" v-bind:trigger="item.triggerType"></search-results>
 

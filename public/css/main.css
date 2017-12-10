@@ -36,7 +36,6 @@ h1 {
 
 h3 {
   font-style: italic;
-  /*margin: 0px auto 1rem 1rem;*/
 }
 
 a {
@@ -96,7 +95,7 @@ a {
 
 #searchBox {
   margin: 1rem auto 1rem 20%;
-  /*display: inline-block;*/
+  display: inline-block;
   margin: auto;
   padding: 2rem;
   box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
@@ -111,8 +110,8 @@ a {
 }
 
 #checkBox {
-  margin: 2rem auto 2rem 25%;
-  /*display: inline-block;*/
+  margin: 3rem auto 2rem 25%;
+  display: inline-block;
   margin: auto;
   padding: 2rem;
   box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
@@ -133,9 +132,6 @@ a {
   margin-bottom: 0.2rem;
   box-shadow: 1px 1px 1px gray;
   font-family: 'Oswald', sans-serif;
-  /*font-family: 'Acme', sans-serif;*/
-  /*font-family: 'Passion One', cursive;*/
-  /*font-family: 'Boogaloo', cursive;*/
 }
 
 #recFormButton {
@@ -228,6 +224,20 @@ li {
 }
 
 .headers {
-  margin: 0.5rem auto 0.5rem auto;
+  margin: 0.5rem auto 1rem auto;
   text-shadow: 1px 1px 1px white, 1px 1px 1px black;
+}
+
+#disclaimerHeader {
+  margin: 0.5rem auto 1rem 0;
+  text-align: left;
+  text-shadow: 1px 1px 1px white, 1px 1px 1px black;
+  font-size: 1rem;
+}
+
+#disclaimer{
+  margin: 1rem auto 1rem 1rem;
+  color: #D60101;
+  font-size: 0.75rem;
+  text-align: justify;
 }
