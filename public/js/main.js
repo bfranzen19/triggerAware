@@ -67,14 +67,15 @@ var mainVM = new Vue({
 
     searchTitle: '',
 
-    searchQuery: {
-      sex: '',
-      war: '',
-      violence: '',
-      loss: '',
-      selfHarm: '',
-      childAbuse: '',
-    },
+    // searchQuery: {
+    //   sex: '',
+    //   war: '',
+    //   violence: '',
+    //   loss: '',
+    //   selfHarm: '',
+    //   childAbuse: '',
+    // },
+    // searchQuery: '', //[],
 
     searchResults: [{
       title: '',
@@ -122,40 +123,42 @@ var mainVM = new Vue({
             })
           }
         }
-          })
+        })
       }
       mainVM.searchTitle = ""
     },
 
   // this doesn't work (yet)
-    searchDBtrigger: function() {
-      if(!$.trim(this.searchQuery)) {
-        alert('please enter a movie title or a trigger type')
-      } else {
-
-
-
-      triggerQuery = this.searchQuery//.join(', ')
-      console.log(triggerQuery)
-
-       $.post('/searchTrigger',{triggerType: triggerQuery}, function(dataFromServer) {
-        console.log('this is data from the server --- ', dataFromServer)
-          if(dataFromServer.length === 0) {
-            mainVM.searchResults.push({
-              title: 'No results found',
-              triggerType: 'This title is safe'
-            })
-          }
-          for(let item in dataFromServer) {
-            mainVM.searchResults.push({
-              title: dataFromServer[item].title,
-              triggerType: dataFromServer[item].triggerType.join(', ')
-            })
-          }
-        })
-      }
-      mainVM.searchQuery = ""
-    },
+    // searchDBtrigger: function() {
+    //   if(!$.trim(this.searchQuery)) {
+    //     alert('please enter a movie title or a trigger type')
+    //   } else {
+    //
+    //
+    //
+    //   triggerQuery = this.searchQuery//.join(', ')
+    //   console.log(triggerQuery)
+    //
+    //    $.post('/searchTrigger',{triggerType: triggerQuery}, function(dataFromServer) {
+    //     console.log('this is data from the server --- ', dataFromServer)
+    //       if(dataFromServer.length === 0) {
+    //         mainVM.searchResults.push({
+    //           title: 'No results found',
+    //           triggerType: 'This title is safe'
+    //         })
+    //       } else {
+    //
+    //       for(let item in dataFromServer) {
+    //         mainVM.searchResults.push({
+    //           title: dataFromServer[item].title,
+    //           triggerType: dataFromServer[item].triggerType.join(', ')
+    //         })
+    //       }
+    //       }
+    //     })
+    //   }
+    //   mainVM.searchQuery = ""
+    // },
 
 
     // login: function() {

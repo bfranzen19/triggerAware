@@ -45,7 +45,9 @@ a {
 }
 
 #aboutTriggerTypes {
-  font-size: 1rem;
+  font-size: 0.75rem;
+  text-shadow: 0.5px 0.5px 0.5px white, 1px 1px 1px black;
+  margin: 0 auto 2rem 40%;
 }
 
 .about {
@@ -240,4 +242,10 @@ li {
   color: #D60101;
   font-size: 0.75rem;
   text-align: justify;
+}
+
+#inputBox {
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

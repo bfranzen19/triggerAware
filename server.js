@@ -154,6 +154,7 @@ app.post('/searchTitle', function(req,res) {
     minMatchCharLength: 1,
     keys: [
       "title",
+      // "triggerType",
     ]
   }
 
@@ -174,37 +175,35 @@ app.post('/searchTitle', function(req,res) {
 })  // z app.post('/searchTitle')
 
 
-app.post('/searchTrigger', function(req,res) {
-  console.log(req.body.triggerType)
-  res.send('got some shit')
-
-  // var options = {
-  //   shouldSort: true,
-  //   threshold: 0.3,
-  //   location: 0,
-  //   distance: 100,
-  //   maxPatternLength: 32,
-  //   minMatchCharLength: 1,
-  //   keys: [
-  //     "triggerType"
-  //   ]
-  // }
-  //
-  //
-  // MediaModel.find({}, function(err,docs) {
-  //   if(err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log(docs)
-  //     var fuse = new Fuse(docs, options);
-  //     var result = fuse.search(req.body.triggerType);
-  //
-  //     console.log('trigger search result --- ', result)
-  //
-  //     res.send(result)
-  //   }
-  // })
-})  // z app.post('/searchTrigger')
+// app.post('/searchTrigger', function(req,res) {
+//   console.log(req.body.triggerType)
+//
+//   var options = {
+//     shouldSort: true,
+//     threshold: 0.3,
+//     location: 0,
+//     distance: 100,
+//     maxPatternLength: 32,
+//     minMatchCharLength: 1,
+//     keys: [
+//       "triggerType"
+//     ]
+//   }
+//
+//   MediaModel.find({}, function(err,docs) {
+//     if(err) {
+//       console.log(err)
+//     } else {
+//       console.log(docs)
+//       var fuse = new Fuse(docs, options);
+//       var result = fuse.search(req.body.triggerType);
+//
+//       console.log('trigger search result --- ', result)
+//
+//       res.send(result)
+//     }
+//   })
+// })  // z app.post('/searchTrigger')
 
 
 
