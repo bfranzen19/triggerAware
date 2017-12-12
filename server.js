@@ -39,22 +39,22 @@ mongoose.connect('mongodb://localhost:27017/TriggerAware', {useMongoClient:true}
 mongoose.Promise = global.Promise
 
 /* user data */
-// var UserSchema = new mongoose.Schema({
-//   username: {
-//     type:     String,
-//     required: true,
-//     unique:   true,
-//   },
-//   password: {
-//     type:     String,
-//     required: true,
-//   },
-//   created: {
-//     type:     Date,
-//     default:  function(){return new Date()}
-//   },
-// })
-// var User = mongoose.model('User', UserSchema)
+var UserSchema = new mongoose.Schema({
+  username: {
+    type:     String,
+    required: true,
+    unique:   true,
+  },
+  password: {
+    type:     String,
+    required: true,
+  },
+  created: {
+    type:     Date,
+    default:  function(){return new Date()}
+  },
+})
+var User = mongoose.model('User', UserSchema)
 
 /* recommend a db entry */
 var RecSchema = new mongoose.Schema({
@@ -112,21 +112,27 @@ var MediaSchema = new mongoose.Schema({
 })
 var MediaModel = mongoose.model('Media', MediaSchema)
 
+// separate DB for testing
+var MediaModel1 =
+mongoose.model('Media1', MediaSchema)
 
 /* ST express stuffz */
 
 /* authentication stuff */
-// var checkIfLoggedIn = function(req,res,next) {
-//   if(req.session._id) {
-//     console.log('user is logged in. proceeding to the next route handler.')
-//     next()
-//   } else {
-//     res.redirect('/register')
-//   }
-// }
-// app.use(function(req,res,next) {
-//   res.sendFile('./public/html/index.html', {root:'./'})
-// })
+var checkIfLoggedIn = function(req,res,next) {
+  if(req.session._id) {
+    console.log('user is logged in. proceeding to the next route handler.')
+    next()
+  } else {
+    res.redirect('/')
+  }
+}
+
+app.use(function(req,res,next) {
+  console.log('session?', req.session)
+  // res.sendFile('./public/html/index.html', {root:'./'})
+  next()
+})
 
 
 
@@ -141,7 +147,6 @@ app.get('/search', function(req,res) {
 })
 
 app.post('/searchTitle', function(req,res) {
-  // console.log('req.body --- ', req.body, 'req.body.title --- ', req.body.title)
 
   var titleString = req.body.title
 
@@ -154,7 +159,6 @@ app.post('/searchTitle', function(req,res) {
     minMatchCharLength: 1,
     keys: [
       "title",
-      // "triggerType",
     ]
   }
 
@@ -173,38 +177,6 @@ app.post('/searchTitle', function(req,res) {
   })
 
 })  // z app.post('/searchTitle')
-
-
-// app.post('/searchTrigger', function(req,res) {
-//   console.log(req.body.triggerType)
-//
-//   var options = {
-//     shouldSort: true,
-//     threshold: 0.3,
-//     location: 0,
-//     distance: 100,
-//     maxPatternLength: 32,
-//     minMatchCharLength: 1,
-//     keys: [
-//       "triggerType"
-//     ]
-//   }
-//
-//   MediaModel.find({}, function(err,docs) {
-//     if(err) {
-//       console.log(err)
-//     } else {
-//       console.log(docs)
-//       var fuse = new Fuse(docs, options);
-//       var result = fuse.search(req.body.triggerType);
-//
-//       console.log('trigger search result --- ', result)
-//
-//       res.send(result)
-//     }
-//   })
-// })  // z app.post('/searchTrigger')
-
 
 
 app.get('/about', function(req,res) {
@@ -230,7 +202,7 @@ app.post('/recommend', function(req,res) {
   new RecModel(newTriggerRec).save(function(err, newTriggerRec) {
     if(err) {
       res.status(418).send(err)
-      consol.log(err)
+      console.log(err)
     }
     // res.status(200).send(newTriggerRec)
     res.send('wooooo! great success!')
@@ -239,36 +211,89 @@ app.post('/recommend', function(req,res) {
 })
 
 
-/* validating recommended entries by moving them from rec to media collection */
-app.get('/validateEntries', function(req,res) {
+app.get('/recEntries', checkIfLoggedIn, function(req,res) {
   res.sendFile('./public/html/validateEntries.html', {root:'./'})
 })
-app.post('/validateEntries', function(req,res) {
+
+app.get('/validateEntries', function(req,res) {
   console.log('req.body --- ', req.body)
-  // this is where the record will be moved from the reqs collection to the media collection.
+  RecModel.find({}, function(err,docs) {
+    if(err) {
+      console.log(err)
+    } else {
+      console.log(docs)
+      res.send(docs)
+    }
+  })
 })
 
+app.post('/validateEntries', function(req,res) {
+  console.log('*** req.body --- ', req.body.recEntries[0])
 
-/* registering users */
-// app.get('/register', function(req,res) {
-//   res.sendFile('./public/html/register.html', {root:'./'})
-// })
-// app.post('/register', function(req,res) {
-//   res.sendFile('./public/html/register.html', {root:'./'})
-// }
+  var newTrigger = {
+    title: req.body.recEntries[0].title,
+    triggerType: req.body.recEntries[0].triggerType,
+    episodeNumber: req.body.recEntries[0].episodeNumber,
+    episodeName: req.body.recEntries[0].episodeName,
+    description: req.body.recEntries[0].description,
+  }
+
+  new MediaModel1(newTrigger).save(function(err, newTrigger) {
+    if(err) {
+      res.status(418).send(err)
+      console.log(err)
+    }
+    res.status(200).send(newTrigger)
+  })
+})
+
+app.post('/removeItem', function(req,res) {
+  RecModel.findByIdAndRemove(req.body._id, function(err,rmItem) {
+    if(err) {
+      console.log(err)
+      res.send(err)
+    } else {
+      console.log('deleted --- ', rmItem)
+      res.send(rmItem)
+    }
+  })
+})
+
 
 
 /* logging users in and out */
-// app.get('/login', function(req,res) {
-//   res.sendFile('./public/html/login.html', {root:'./'})
-// })
-// app.post('/login', function(req,res) {
-//   res.sendFile('./public/html/login.html', {root:'./'})
-// })
-// app.get('/logout', function(req,res) {
-//   req.session.reset()
-//   res.redirect('/')
-// })
+
+app.post('/register', function(req,res) {
+  var newUser = new User(req.body)
+  bcrypt.genSalt(11, function(saltErr,salt) {
+    if(saltErr) {console.log(saltErr)}
+
+    bcrypt.hash(newUser.password, salt, function(hashErr, hashedPassword) {
+      if(hashErr) {console.log(hashErr)}
+      newUser.password = hashedPassword
+      newUser.save(function(err) {
+        if(err) {
+          console.log('failed to save user')
+          res.send(err)
+        } else {
+          req.session._id = newUser._id
+          res.send({success:'success!'})
+        }
+      })
+    })
+  })
+})
+
+app.get('/login', function(req,res) {
+  res.sendFile('./public/html/login.html', {root:'./'})
+})
+app.post('/login', function(req,res) {
+  
+})
+app.get('/logout', function(req,res) {
+  req.session.reset()
+  res.redirect('/')
+})
 
 
 

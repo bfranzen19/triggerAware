@@ -34,111 +34,55 @@
 
 
 <!-- search by title div -->
-  <h3 class="headers"> Search by Title: </h3>
-    <div class="container">
-      <div class="row col-xs-12">
-        <div id="search" >
+      <div v-bind:class="{hide: !visible}">
 
-        <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
-          <div id="searchBox">
-            <input v-model="searchTitle" type="text" name="inputBox" size=24 placeholder="Enter A TV Show or Movie Title" id="inputBox">
-            <input type="submit" value="search">
-          </div>
-        </form>
-
-        </div>
-
-
-      </div>
-      <div id="aboutTriggerTypes">
-        <a href="/about#triggers">Learn About Trigger Types </a>
-      </div> 
-    </div>
-
-
-<!-- search by trigger div -->
-<!--
-    <h3 class="headers"> Search by Trigger Type  <span id="aboutTriggerTypes"><a href="/about#triggers">
-      (about trigger types) </a></span> </h3>
-    <div class="container">
-      <div class="row col-xs-12">
-        <div  id="checkBox">
-
-        <form v-on:submit.prevent="searchDBtrigger" v-on:submit="visible = !visible" > -->
-
-          <!-- <form v-on:submit.prevent="searchDBtrigger" v-on:submit="visible = !visible">
-            <div id="checkBox">
-              <input v-model="searchQuery" type="text" name="inputBox" size=24>
-              <input type="submit" value="search">
+      <h3 class="headers"> Search by Title: </h3>
+        <div class="container">
+          <div class="row col-xs-12">
+            <div id="search" >
+              <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
+                <div id="searchBox">
+                  <input v-model="searchTitle" type="text" name="inputBox" size=24 placeholder="Enter A TV Show or Movie Title" id="inputBox">
+                  <input type="submit" value="search">
+                </div>
+              </form>
             </div>
-          </form> -->
-
-
-          <!-- <div>
-            <div>
-              <input type="checkbox" name="sexBox" class="checkBoxItems" value="sex" v-model="searchQuery">
-              <label for='sexBox'> sex </label>
-            </div>
-            <div>
-              <input type="checkbox" name="warBox" class="checkBoxItems" value="war" v-model="searchQuery">
-              <label for='warBox'> war </label>
-            </div>
-            <div>
-              <input type="checkbox" name="violenceBox" class="checkBoxItems" value="violence" v-model="searchQuery">
-              <label for='violenceBox'> violence </label>
-            </div>
-            <div>
-              <input type="checkbox" name="lossBox" class="checkBoxItems" value="loss" v-model="searchQuery">
-              <label for='lossBox'> loss </label>
-            </div>
-            <div>
-              <input type="checkbox" name="selfHarmBox" class="checkBoxItems" value="self harm" v-model="searchQuery">
-              <label for='selfHarmBox'> self harm </label>
-            </div>
-            <div>
-              <input type="checkbox" name="childAbuseBox" class="checkBoxItems" value="self harm" v-model="searchQuery">
-              <label for='childAbuseBox'> self harm </label>
-            </div>
-
-            <div id="checkBoxBtn">
-              <input type="submit" value="search">
-            </div>
-
           </div>
 
-        </form>
-          {{searchQuery}}
+        </div>
+        <br/>
         </div>
 
-      </div> -->
-  <!--   </div>  z trigger div -->
+          <div id="searchAgain">
+            <div :class="{hide: visible}">
+              <a href="/search" class="headers"> Search Again? </a>
+            </div>
+          </div> <br/>
+
+          <div id="aboutTriggerTypes">
+            <a href="/about#triggers">Learn About Trigger Types </a>
+          </div>
+        <hr />
 
 
-<br /><br /><hr />
+
 <!-- results div -->
 
+        <div v-bind:class="{showResults: visible}">
+          <h2 class="searchHeader"> Search Results: {{recordsFound}} titles found</h2>
+            <search-results v-for="item in searchResults" :key="item.id" v-bind:title="item.title" v-bind:trigger="item.triggerType"></search-results>
+        </div> <!-- z results div -->
 
-      <div v-bind:class="{showResults: visible}" >
-        <h2 class="headers"> Search Results: {{recordsFound}} records found</h2>
-        <div v-for="item in searchResults">
-          <search-results v-bind:title="item.title" v-bind:trigger="item.triggerType"></search-results>
-
-        </div>
-      </div>  <!-- z results div -->
-
-
-
-    </div>
+      </div> <!-- z mainContent div -->
 
 <!-- footer div -->
     <div id="footer">
-      <main-footer></main-footer>
+      <main-footer url="http://btfranzen.com"></main-footer>
     </div>
 
   </div>  <!-- z app -->
 
 <!-- bootstrap -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <!-- main JS -->

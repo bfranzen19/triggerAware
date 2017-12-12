@@ -20,7 +20,10 @@ body {
   text-align: center;
   margin-top: 5rem;
   background-color: #eeeeee;
+  text-decoration: none;
+  color: black;
 }
+
 
 #main-content {
   text-align: center;
@@ -46,7 +49,7 @@ a {
 
 #aboutTriggerTypes {
   font-size: 0.75rem;
-  text-shadow: 0.5px 0.5px 0.5px white, 1px 1px 1px black;
+  text-shadow: 0.5px 0.5px 0.5px gray;
   margin: 0 auto 2rem 40%;
 }
 
@@ -77,6 +80,7 @@ a {
 
 #toTop {
   font-size: 0.75rem;
+  margin: auto;
 }
 
 #brand {
@@ -169,6 +173,10 @@ li {
   display: none;
 }
 
+.hide {
+  display: none;
+}
+
 #resultsList {
   text-align: justify;
   margin: 0.5rem auto .25rem 1rem;
@@ -248,4 +256,44 @@ li {
   font-size: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin: auto;
+}
+
+.searchHeader {
+  margin: 0.5rem auto 1rem 20%;
+  text-shadow: 1px 1px 1px white, 1px 1px 1px black;
+}
+
+#searchAgain {
+  font-size: 2rem;
+  text-align: center;
+}
+
+input {
+  text-align: center;
+}
+
+#valResults {
+  margin: 0 auto 1rem auto;
+}
+
+#linkID {
+  text-decoration: none;
+  color: black;
+}
+
+#linkID:hover {
+  color: blue;
+}
+
+#login {
+  width: 100%;
+  margin: 1rem auto 0.5rem 30%;
+  padding: 1rem;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 1px black;
+}
+
+#loginSubmit {
+  margin: 1rem auto 0 40%;
 }

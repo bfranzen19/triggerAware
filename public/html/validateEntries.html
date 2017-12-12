@@ -27,38 +27,59 @@
     <div class="container" id="validateEntries">
       <div class="row col-xs-12 col-xl-12">
         <h1> validate recommended entries </h1>
+        <form>
 
-        <div id="valResults">
-
+        <div id="valResults" v-on:click="getRecEntries">
+          <button type="button" class="btn btn-outline-primary"> get recommended scenes </button>
         </div>
 
-        <div id="valBtns">
-          <button type="button" class="btn btn-outline-success"> add this record to the DB </button>
-          <button type="button" class="btn btn-outline-danger"> delete this dumpster fire </button>
+        <div >
+
+          <div id="valBtns" v-for="item in recEntries">
+
+            <label for="title"> Title: </label>
+            <input name="title" type="text" v-model="item.title" size="50%"/><br/>
+
+            <label for="triggerType"> Trigger Type: </label>
+            <input name="triggerType" type="text" v-model="item.triggerType" size="50%"/><br/>
+
+            <label for="episodeNumber"> Episode Number: </label>
+            <input name="episodeNumber" type="text" v-model="item.episodeNumber" size="50%"/><br/>
+
+            <label for="episodeName"> Episode Name: </label>
+            <input name="episodeName" type="text" v-model="item.episodeName" size="50%"/><br/>
+
+            <label for="description"> Description: </label>
+            <input name="description" type="text" v-model="item.description" size="50%"/><br/>
+
+
+            <button type="button" class="btn btn-outline-success" v-on:click="validateEntries"> add this record to the DB </button>
+            <button type="button" class="btn btn-outline-danger" v-on:click="removeRec(item)"> delete this dumpster fire </button>
+
+            <br/><br/><hr/><br/><br/>
+          </div>
+
         </div>
 
         </form>
+
+        <hr>
+        <li><a href="/logout">log out</a></li>
+        <hr>
+        
       </div>
     </div>
 
-
-<!-- search div -->
-    <div class="container-fluid">
-      <div id="search" class="row col-xs-12">
-          <a href="/search"> search DB </a>
-      </div>
-    </div>
 
 
 <!-- footer div -->
-    <div id="footer">
-      <main-footer></main-footer>
-    </div>
+      <div id="footer">
+        <main-footer url="http://btfranzen.com"></main-footer>
+      </div>
 
   </div>  <!-- z app -->
 
 <!-- bootstrap -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <!-- main JS -->

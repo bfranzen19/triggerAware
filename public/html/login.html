@@ -4,6 +4,8 @@
   <title></title>
 <!-- vue -->
   <script src="https://unpkg.com/vue"></script>
+<!-- jQ -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <!-- main CSS -->
@@ -19,24 +21,52 @@
     <main-nav></main-nav>
 
     <div class="container-fluid">
-      <div id="login" class="row col-xs-12">
-        <h1> login </h1>
+      <div class="row col-xs-12">
+        <h1 class="headers"> are you me? </h1>
       </div>
     </div>
 
 
     <div class="container-fluid">
-      <div id="login" class="row col-xs-12">
+      <div class="row col-xs-12">
         <form v-on:submit.prevent="login">
 
-            <label for="userName">username: </label>
-            <input type="text" name="userName" placeholder="username" v-model="loginForm.username"/>
+          <div id="login">
+            <div>
+              <label for="userName">username: </label>
+              <input type="text" name="userName" placeholder="username" v-model="loginForm.username"/>
+            </div>
+            <div>
+              <label for="password">password: </label>
+              <input type="password" name="password" placeholder="password" v-model="loginForm.password"/>
+            </div>
+            <div id="loginSubmit">
+              <input type="submit" value="login"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
-            <label for="password">password: </label>
-            <input type="text" name="password" placeholder="password" v-model="loginForm.password"/>
+<!-- register a new admin -->
+    <div class="container-fluid">
+      <div class="row col-xs-12">
+        <h4 class="headers">register a new admin </h4>
+        <form v-on:submit.prevent="register">
 
-            <input type="submit" value="login"/>
-
+          <div id="login">
+            <div>
+              <label for="userName">username: </label>
+              <input type="text" name="userName" placeholder="username" v-model="regForm.username"/>
+            </div>
+            <div>
+              <label for="password">password: </label>
+              <input type="password" name="password" placeholder="password" v-model="regForm.password"/>
+            </div>
+            <div id="loginSubmit">
+              <input type="submit" value="login"/>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -48,7 +78,6 @@
   </div>  <!-- z app -->
 
 <!-- bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <!-- main JS -->
