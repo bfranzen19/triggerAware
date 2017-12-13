@@ -335,10 +335,10 @@ app.use(function(req,res,next) {
   res.send(`that's a 404 error, yo.`)
 })
 
-app.listen(8080, function() {
-  console.log('running on 8080')
-})
-
-// app.listen(80, function() {
-//   console.log('running on port 80')
+// app.listen(8080, function() {
+//   console.log('running on 8080')
 // })
+
+app.listen(80, function() {
+  console.log('running on port 80')
+})
