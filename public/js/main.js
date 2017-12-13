@@ -65,7 +65,17 @@ Vue.component('validate-rec', {
   props: ['id', 'userEmail', 'title', 'triggerType', 'episodeNumber', 'episodeName', 'description']
 })
 
+Vue.component('logged-in', {
+  template: `
+    <div id="loginStuff">
+      <a href="/recEntries"> validate entries </a>
 
+      <hr>
+      <li><a href="/logout">log out</a></li>
+      <hr>
+    </div>
+  `,
+})
 
 
 var mainVM = new Vue({
@@ -110,6 +120,8 @@ var mainVM = new Vue({
     visible: true,
 
     recordsFound: [],
+
+    showValidate: false,
 
   },
 
@@ -159,17 +171,15 @@ var mainVM = new Vue({
 
     validateEntries: function() {
       console.log('mainVM.recEntries --- ', mainVM.recEntries[0].title)
-      // var recEntries = mainVM.recEntries
-      //
-      // $.post('/validateEntries', {recEntries}, function(dataFromServer) {
-      //   console.log('rec entries from db --- ', dataFromServer)
-      // })
+      $.post('/validateEntries', {recEntries}, function(dataFromServer) {
+        console.log('rec entries from db --- ', dataFromServer)
+      })
       mainVM.recEntries[0].title = ""
       mainVM.recEntries[0].triggerType=""
       mainVM.recEntries[0].episodeNumber=""
       mainVM.recEntries[0].episodeName=""
       mainVM.recEntries[0].description=""
-      // mainVM.getRecEntries()
+      mainVM.getRecEntries()
     },
 
     removeRec: function(item) {
@@ -190,7 +200,15 @@ var mainVM = new Vue({
     login: function() {
       $.post('/login', this.loginForm, function(dataFromServer) {
         console.log(dataFromServer)
+        console.log(dataFromServer.success)
+        if(dataFromServer.success) {
+          mainVM.showValidate = true
+        } else {
+          alert('failed login.')
+        }
       })
+      mainVM.loginForm.username = ""
+      mainVM.loginForm.password = ""
     },
 
   },

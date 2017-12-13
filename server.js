@@ -23,6 +23,7 @@ app.use(express.static('./public'))
 var sessionsMiddleware = sessionsModule({
   cookieName: 'TriggerAware',
   secret: secrets.cookieSecret,
+  requestKey: 'session',
   duration: 86400 * 1000 * 7,
   cookie: {
     httpOnly: true,
@@ -287,12 +288,42 @@ app.post('/register', function(req,res) {
 app.get('/login', function(req,res) {
   res.sendFile('./public/html/login.html', {root:'./'})
 })
+
 app.post('/login', function(req,res) {
-  
+  console.log(req.body)
+  var uname = req.body.username
+  var pass = req.body.password
+
+  // console.log(req.body.session)
+  //
+  // res.send('round trip, yo')
+
+  User.findOne({username:uname}, function(err,user) {
+  if(err) {
+    console.log('failed to find user')
+    res.send({failure:'failure'})
+  } else if(!user) {
+    res.send({failure: 'failure'})
+  } else {
+    bcrypt.compare(pass, user.password, function(bcryptErr,matched) {
+      if(bcryptErr) {
+        console.log('bcrypt err --- ', bcryptErr)
+        res.send({failure: 'failure'})
+      } else if(!matched) {
+        console.log(`wrong username/password`)
+        res.send({failure:'failure'})
+      } else if(matched) {
+        req.session._id = user._id
+        res.send({success:'success'})
+      }
+    })
+  }
+  })
 })
+
 app.get('/logout', function(req,res) {
   req.session.reset()
-  res.redirect('/')
+  res.redirect('/login')
 })
 
 
