@@ -336,10 +336,10 @@ app.use(function(req,res,next) {
 try {
   var httpsConfig = {
     key: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/fullchain.pem')
+    cert: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/cert.pem'),
   }
 
-  var httpsServer = HTTPS.createServer(httpsConfig,app)
+  var httpsServer = HTTPS.createServer(httpsConfig, app)
   httpsServer.listen(443)
 
   var httpApp = express()
@@ -357,8 +357,4 @@ catch(e) {
 
 // app.listen(8080, function() {
 //   console.log('running on 8080')
-// })
-
-// app.listen(80, function() {
-//   console.log('running on port 80')
 // })
