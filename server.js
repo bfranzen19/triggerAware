@@ -8,11 +8,27 @@ var HTTP = require('http')
 var HTTPS = require('https')
 var fs = require('fs')
 
-// var httpApp = express()
-// httpApp.use(function(req,res,next) {
-//   res.redirect('https://triggeraware.com')
-// })
+try {
+  var httpsConfig = {
+    key: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/fullchain.pem')
+  }
 
+  var httpsServer = HTTPS.createServer(httpsConfig,app)
+  httpsServer.listen(443)
+
+  var httpApp = express()
+  httpApp.use(function(req,res,next) {
+    res.redirect('https://triggeraware.com' + req.url)
+  })
+  httpApp.listen(80)
+}
+catch(e) {
+  console.log(e)
+  console.log('could not start HTTPS server')
+  var httpServer = HTTP.createServer(app)
+  httpServer.listen(80)
+}
 
 /* search */
 var Fuse = require('fuse.js')
@@ -221,7 +237,6 @@ app.post('/recommend', function(req,res) {
   })
 })
 
-
 app.get('/recEntries', checkIfLoggedIn, function(req,res) {
   res.sendFile('./public/html/validateEntries.html', {root:'./'})
 })
@@ -304,10 +319,6 @@ app.post('/login', function(req,res) {
   var uname = req.body.username
   var pass = req.body.password
 
-  // console.log(req.body.session)
-  //
-  // res.send('round trip, yo')
-
   User.findOne({username:uname}, function(err,user) {
   if(err) {
     console.log('failed to find user')
@@ -349,6 +360,6 @@ app.use(function(req,res,next) {
 //   console.log('running on 8080')
 // })
 
-app.listen(80, function() {
-  console.log('running on port 80')
-})
+// app.listen(80, function() {
+//   console.log('running on port 80')
+// })
