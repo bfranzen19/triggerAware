@@ -134,13 +134,12 @@ var checkIfLoggedIn = function(req,res,next) {
   }
 }
 
+/* authentication middleware */
 app.use(function(req,res,next) {
   console.log('session?', req.session)
   // res.sendFile('./public/html/index.html', {root:'./'})
   next()
 })
-
-
 
 
 /* routes */
@@ -327,14 +326,12 @@ app.get('/logout', function(req,res) {
 })
 
 
-
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
 app.use(function(req,res,next) {
   res.status(404)
   res.send(`that's a 404 error, yo.`)
 })
-
 
 try {
   var httpsConfig = {
