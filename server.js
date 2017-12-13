@@ -3,6 +3,16 @@ var mongoose = require('mongoose')
 var emailType = require('mongoose-type-email')
 var bodyParser = require('body-parser')
 
+/* deployment */
+var HTTP = require('http')
+var HTTPS = require('https')
+var fs = require('fs')
+
+// var httpApp = express()
+// httpApp.use(function(req,res,next) {
+//   res.redirect('https://triggeraware.com')
+// })
+
 
 /* search */
 var Fuse = require('fuse.js')
