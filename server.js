@@ -8,27 +8,6 @@ var HTTP = require('http')
 var HTTPS = require('https')
 var fs = require('fs')
 
-try {
-  var httpsConfig = {
-    key: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/fullchain.pem')
-  }
-
-  var httpsServer = HTTPS.createServer(httpsConfig,app)
-  httpsServer.listen(443)
-
-  var httpApp = express()
-  httpApp.use(function(req,res,next) {
-    res.redirect('https://triggeraware.com' + req.url)
-  })
-  httpApp.listen(80)
-}
-catch(e) {
-  console.log(e)
-  console.log('could not start HTTPS server')
-  var httpServer = HTTP.createServer(app)
-  httpServer.listen(80)
-}
 
 /* search */
 var Fuse = require('fuse.js')
@@ -339,7 +318,7 @@ app.post('/login', function(req,res) {
       }
     })
   }
-  })
+})
 })
 
 app.get('/logout', function(req,res) {
@@ -355,6 +334,29 @@ app.use(function(req,res,next) {
   res.status(404)
   res.send(`that's a 404 error, yo.`)
 })
+
+
+try {
+  var httpsConfig = {
+    key: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/triggeraware.com/fullchain.pem')
+  }
+
+  var httpsServer = HTTPS.createServer(httpsConfig,app)
+  httpsServer.listen(443)
+
+  var httpApp = express()
+  httpApp.use(function(req,res,next) {
+    res.redirect('https://triggeraware.com' + req.url)
+  })
+  httpApp.listen(80)
+}
+catch(e) {
+  console.log(e)
+  console.log('could not start HTTPS server')
+  var httpServer = HTTP.createServer(app)
+  httpServer.listen(80)
+}
 
 // app.listen(8080, function() {
 //   console.log('running on 8080')

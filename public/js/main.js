@@ -102,10 +102,7 @@ var mainVM = new Vue({
 
     searchTitle: '',
 
-    searchResults: [{
-      title: '',
-      triggerType: '',
-    }],
+    searchResults: [],
 
     recEntries: [{
       id: '',
@@ -149,11 +146,11 @@ var mainVM = new Vue({
               triggerType: 'This title may be safe'
           })
         } else {
-          for(let item in dataFromServer) {
+          for(let item of dataFromServer) {
             mainVM.recordsFound = dataFromServer.length
             mainVM.searchResults.push({
-              title: dataFromServer[item].title,
-              triggerType: dataFromServer[item].triggerType.join(', ')
+              title: item.title,
+              triggerType: item.triggerType.join(', ')
             })
           }
         }
