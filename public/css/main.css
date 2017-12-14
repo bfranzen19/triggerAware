@@ -36,15 +36,16 @@
 }
 
 #searchBtn {
+  display: inline-block;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0.3rem 0.3rem 0.25rem 0.3rem;
   margin: 0;
 }
 
 #inputBox {
   display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem 0.3rem 1rem;
+  font-size: 1.2rem;
+  padding: 0.1rem 1rem 0.12rem 1rem;
   /*margin: auto auto auto 20%;*/
   /*padding:.2rem 1rem .19rem 1rem;*/
   margin: auto;
@@ -263,7 +264,7 @@ li {
   font-family: 'Merriweather', serif;
   font-size: 1.15rem;
   padding: 0.25rem;
-  padding-left: 1rem;
+  padding-left: 4rem;
   box-shadow: 1px 1px 2px gray;
   border-top: 1.5px solid red;
   border-left: 1.5px solid red;
