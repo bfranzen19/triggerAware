@@ -18,15 +18,29 @@
 /* search box*/
 .item-a {
   padding: 20px;
-  grid-column: 6 / span 6
+  grid-column: 1 / span 12
   width: 100%;
   margin: auto;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
 }
 
+.item-rec {
+  margin-left: 10%;
+}
+
+#searchBox {
+  width: 100%;
+}
+
+#searchBtn {
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin: 0;
+}
+
 .item-d {
-grid-column: 0 / span 6;
+grid-column: 1 / span 12;
 }
 
 /* search again */
@@ -54,19 +68,25 @@ grid-column: 0 / span 6;
 
 .triggerBtn {
   background-color: white;
+  margin: auto;
 }
 
-#search {
+.navbar {
+  grid-column: 1 / span 12
+  width: 100%;
+}
+
+/*#search {
   text-align: center;
   width: 100%;
   margin: 1rem auto 3rem 5%;
-}
+}*/
 
-#searchContainer {
+/*#searchContainer {
   font-size: 2rem;
   margin: auto;
   font-family: 'Passion One', cursive;
-}
+}*/
 
 #searchBox input:hover {
   box-shadow: 1px 1px 1px gray;
@@ -75,17 +95,11 @@ grid-column: 0 / span 6;
 nav {
   font-size: 1rem;
   font-family: 'Oswald', sans-serif;
-  /*font-family: 'Acme', sans-serif;*/
-  /*font-family: 'Passion One', cursive;*/
-  /*font-family: 'Boogaloo', cursive;*/
 }
 
 body {
   font-size: 1.2rem;
-  /*font-family: 'Oswald', sans-serif;*/
   font-family: 'Merriweather', serif;
-  /*font-family: 'Passion One', cursive;*/
-  /*font-family: 'Boogaloo', cursive;*/
   position: relative;
 }
 
@@ -97,7 +111,6 @@ body {
   text-decoration: none;
   color: black;
 }
-
 
 #main-content {
   text-align: center;
@@ -136,7 +149,7 @@ a {
   font-size: 1rem;
   margin: auto;
   letter-spacing: 0.25px;
-  text-align: justify;
+  text-align: left;
 }
 
 #warning {
@@ -146,10 +159,10 @@ a {
   letter-spacing: 0.5px;
 }
 
-.toTop {
-  font-size: 0.75rem;
+.toTop a {
   margin: auto;
-  /*margin: auto auto auto 40%;*/
+  font-size: 0.75rem;
+  width: 100%;
 }
 
 #brand {
@@ -171,7 +184,8 @@ a {
 
 #recFormButton {
   padding: 0 5rem;
-  margin: 0.5rem auto 1rem 22%;
+  margin: auto auto auto 0.9rem;
+  /*margin: 0.5rem auto 1rem 22%;*/
   box-shadow: 1px 1px 1px gray;
 }
 
@@ -240,6 +254,8 @@ li {
   background-color: white;
 }
 
+
+
 #triggerBox {
   box-shadow: 1px 1px 2px gray;
   border-top: 1px solid red;
@@ -287,7 +303,6 @@ li {
 }
 
 .searchHeader {
-  /*margin: 0.5rem auto 1rem 20%;*/
   text-shadow: 1px 1px 1px white, 1px 1px 1px black;
 }
 

@@ -30,33 +30,53 @@
       <div class="row col-xs-12">
         <h1 class="headers"> Search Our Database </h1>
       </div>
-      <hr/>
 
-<div class="wrapper">
-  <div class="content">
+
 
 <!-- search by title div -->
+
+
+<!-- <h4 class="card-header">Featured</h4> -->
+<!-- <div class="card-body"> -->
+  <!-- <h4 class="card-title">Special title treatment</h4> -->
+  <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+</div> -->
+
+
+
+    <!-- <h3 class="headers"> Search by Title: </h3> -->
+
+    <div class="card">
+
       <div v-bind:class="{hide: !visible}">
       <span class="item-d">
-        <h3 class="headers"> Search by Title: </h3>
+        <!-- <h3 class="headers"> Search by Title: </h3> -->
       </span>
-        <div class="container-fluid">
-          <div class="row col-xs-12">
+        <!-- <div class="container-fluid">
+          <div class="row col-xs-12"> -->
 
-            <span class="item-a" > <!-- <div id="search" > -->
+        <div class="card-body">
+
+          <div class="wrapper">
+            <div class="content">
+
+            <div class="item-a"> <!-- <div id="search" > -->
               <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
-                <div id="searchBox">
-                  <input v-model="searchTitle" type="text" name="inputBox" size=24 placeholder="Enter A TV Show or Movie Title" id="inputBox">
-                  <input type="submit" value="search">
-                </div>
+                <span id="searchBox">
+                  <input v-model="searchTitle" type="text" name="inputBox" size="25%" placeholder="Enter A TV Show or Movie Title" id="inputBox">
+                  <input id="searchBtn" type="submit" value="search">
+                </span>
               </form>
-            </span>
-
+            </div>
+            </div>
           </div>
-
+          </div>
         </div>
         <!-- <br/> -->
         </div>
+
+      </div>
 
           <!-- <div id="searchAgain"> -->
           <div class="item-b">
@@ -82,7 +102,7 @@
 <!-- results div -->
         <div class="item-e">
         <div v-bind:class="{showResults: visible}">
-          <h2 class="searchHeader"> Search Results: {{recordsFound}} titles found</h2>
+          <br/><br/><h2 class="searchHeader"> Search Results: {{recordsFound}} titles found</h2><br/>
             <search-results v-for="item in searchResults" :key="item.id" v-bind:title="item.title" v-bind:trigger="item.triggerType"></search-results>
         </div> <!-- z results div -->
         </div>
@@ -90,8 +110,8 @@
 
       </div> <!-- z mainContent div -->
 
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 
 <br/><br/><br/><br/><br/><br/>
 <!-- footer div -->

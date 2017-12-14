@@ -22,39 +22,48 @@
   <div id="app">
 
     <main-nav></main-nav>
+
+  <div class="wrapper">
+    <div class="content">
+
     <h1 class="headers"> Recommend a Triggering Scene </h1>
 
 <!-- main content -->
+    <div class="item-rec">
+
     <div class="container">
-      <div class="row col-xs-12 col-xl-12">
+      <div class="row col-xs-12 col-xl-12S">
+        <div class="card">
 
         <form id="recForm" v-on:submit.prevent="recommend">
           <div>
-            <input class="recFormItem" type="text" placeholder="enter your email (required)" size="50" v-model="recForm.userEmail"/>
+            <input class="recFormItem" type="text" placeholder="enter your email (required)" size="30%" v-model="recForm.userEmail"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="title (required)" size="50"  v-model="recForm.title"/>
+            <input class="recFormItem" type="text" placeholder="title (required)" size="30%"  v-model="recForm.title"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="trigger type (required)" size="50"  v-model="recForm.triggerType"/>
+            <input class="recFormItem" type="text" placeholder="trigger type (required)" size="30%"  v-model="recForm.triggerType"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="episode number" size="50"  v-model="recForm.episodeNumber"/>
+            <input class="recFormItem" type="text" placeholder="episode number" size="30%"  v-model="recForm.episodeNumber"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="episode name" size="50"  v-model="recForm.episodeName"/>
+            <input class="recFormItem" type="text" placeholder="episode name" size="30%"  v-model="recForm.episodeName"/>
           </div>
           <div>
-            <textarea class="recFormItem" type="text" placeholder="description (required)" v-model="recForm.description" rows="2" cols="42"></textarea>
+            <textarea class="recFormItem" type="text" placeholder="description (required)" v-model="recForm.description" rows="2" cols="22%"></textarea>
           </div>
           <div>
             <input id="recFormButton" type="submit" class="btn btn-outline-info">
           </div>
 
         </form>
+        </div>
+
       </div>
     </div>
-
+    </div>
 
 
 
@@ -69,10 +78,14 @@
 
 
 <!-- footer div -->
-    <div id="footer">
-      <main-footer url="/login"></main-footer>
+    <div class="footer">
+      <div id="footer">
+        <main-footer url="http://btfranzen.com"></main-footer>
+      </div>
     </div>
 
+      </div>
+    </div>
   </div>  <!-- z app -->
 
 <!-- bootstrap -->
