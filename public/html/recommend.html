@@ -3,6 +3,7 @@
 <head>
   <title> TriggerAware </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <html lang="en">
 <!-- vue -->
   <script src="https://unpkg.com/vue"></script>
 <!-- jQ -->
@@ -34,55 +35,44 @@
     <div class="item-rec">
 
     <div class="container">
-      <div class="row col-xs-12 col-xl-12S">
-        <!-- <div class="card"> -->
+      <div class="row col-xs-12 col-xl-12">
 
-      <!-- <div class="wrapper">
-        <div class="content"> -->
         <form id="recForm" v-on:submit.prevent="recommend">
           <!-- <div class="card"> -->
           <section>
-          <div class="recItems">
-            <input class="recFormItem" type="text" placeholder="enter your email *" size="24%" v-model="recForm.userEmail"/>
-          </div><br/>
-          <div class="recItems">
-            <input class="recFormItem" type="text" placeholder="title *" size="24%"  v-model="recForm.title"/>
-          </div><br/>
-          <div class="recItems">
-            <input class="recFormItem" type="text" placeholder="trigger type *" size="24%"  v-model="recForm.triggerType"/>
-          </div><br/>
-          <div class="recItems">
-            <input class="recFormItem" type="text" placeholder="episode number" size="24%"  v-model="recForm.episodeNumber"/>
-          </div><br/>
-          <div class="recItems">
-            <input class="recFormItem" type="text" placeholder="episode name" size="24%"  v-model="recForm.episodeName"/>
-          </div><br/>
-          <div class="recItems">
-            <input class="recFormItem" type="text" placeholder="description *" size="24%" v-model="recForm.description"/>
-          </div><br/>
-          <div class="recItems">
-            <input id="recFormButton" type="submit" class="btn btn-outline-info">
-          </div><br/>
-          <!-- </div> -->
+            <div class="recItems">
+              <input class="recFormItem" type="text" placeholder="enter your email *" size="24%" v-model="recForm.userEmail" name="email"/>
+              <label for="email" title="email"></label>
+            </div><br/>
+            <div class="recItems">
+              <input class="recFormItem" type="text" placeholder="title *" size="24%"  v-model="recForm.title" name="title"/>
+              <label for="title" title="title"></label>
+            </div><br/>
+            <div class="recItems">
+              <input class="recFormItem" type="text" placeholder="trigger type *" size="24%"  v-model="recForm.triggerType" name="trigger-type"/>
+              <label for="trigger-type" title="trigger type"></label>
+            </div><br/>
+            <div class="recItems">
+              <input class="recFormItem" type="text" placeholder="episode number" size="24%"  v-model="recForm.episodeNumber" name="episode-number"/>
+              <label for="episode-number" title="episode number"></label>
+            </div><br/>
+            <div class="recItems">
+              <input class="recFormItem" type="text" placeholder="episode name" size="24%"  v-model="recForm.episodeName" name="episode-name"/>
+              <label for="episode-name" title="episode name"></label>
+            </div><br/>
+            <div class="recItems">
+              <input class="recFormItem" type="text" placeholder="description *" size="24%" v-model="recForm.description" name="description"/>
+              <label for="description" title="description"></label>
+            </div><br/>
+            <div class="recItems">
+              <input id="recFormButton" type="submit" class="btn btn-outline-info" name="submit" value="submit">
+              <label for="submit" title="submit"></label>
+            </div><br/>
           </section>
         </form>
-          <!-- </div> -->
-        <!-- </div> -->
-        <!-- </div> -->
 
       </div>
     </div>
-    </div>
-
-
-
-<!-- search div -->
-    <div class="container-fluid">
-      <div id="search" class="row col-xs-12">
-
-          <a href="/search"></a>
-
-      </div>
     </div>
 
 

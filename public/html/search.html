@@ -3,6 +3,7 @@
 <head>
   <title> TriggerAware </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <html lang="en">
 <!-- vue -->
   <script src="https://unpkg.com/vue"></script>
 <!-- jQ -->
@@ -52,8 +53,10 @@
             <div class="item-a">
               <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
                 <div id="searchBox">
-                  <input v-model="searchTitle" type="text" name="inputBox" size="22%" placeholder="Search By Title" id="inputBox">
-                  <input id="searchBtn" type="submit" value="search">
+                  <input v-model="searchTitle" type="text" name="inputBox" size="22%" placeholder="Search By Title" id="inputBox" >
+                  <label for="inputBox" title="search bar"></label>
+                  <input id="searchBtn" type="submit" value="search" name="searchButton">
+                  <label for="searchButton" title="search submit"></label>
                 </div>
               </form>
             </div>
