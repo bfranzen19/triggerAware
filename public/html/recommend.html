@@ -28,6 +28,8 @@
 
     <h1 class="headers"> Recommend a Triggering Scene </h1>
 
+    </div>
+  </div>
 <!-- main content -->
     <div class="item-rec">
 
@@ -35,31 +37,35 @@
       <div class="row col-xs-12 col-xl-12S">
         <!-- <div class="card"> -->
 
+      <!-- <div class="wrapper">
+        <div class="content"> -->
         <form id="recForm" v-on:submit.prevent="recommend">
           <div class="card">
           <div>
-            <input class="recFormItem" type="text" placeholder="enter your email (required)" size="32%" v-model="recForm.userEmail"/>
+            <input class="recFormItem" type="text" placeholder="enter your email *" size="24%" v-model="recForm.userEmail"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="title (required)" size="32%"  v-model="recForm.title"/>
+            <input class="recFormItem" type="text" placeholder="title *" size="24%"  v-model="recForm.title"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="trigger type (required)" size="32%"  v-model="recForm.triggerType"/>
+            <input class="recFormItem" type="text" placeholder="trigger type *" size="24%"  v-model="recForm.triggerType"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="episode number" size="32%"  v-model="recForm.episodeNumber"/>
+            <input class="recFormItem" type="text" placeholder="episode number" size="24%"  v-model="recForm.episodeNumber"/>
           </div>
           <div>
-            <input class="recFormItem" type="text" placeholder="episode name" size="32%"  v-model="recForm.episodeName"/>
+            <input class="recFormItem" type="text" placeholder="episode name" size="24%"  v-model="recForm.episodeName"/>
           </div>
           <div>
-            <textarea class="recFormItem" type="text" placeholder="description (required)" v-model="recForm.description" rows="2" cols="24%"></textarea>
+            <input class="recFormItem" type="text" placeholder="description *" size="24%" v-model="recForm.description"/>
           </div>
           <div>
             <input id="recFormButton" type="submit" class="btn btn-outline-info">
-          </div>
-          </div>
+          <!-- </div>
+          </div> -->
         </form>
+      </div>
+    </div>
         <!-- </div> -->
 
       </div>

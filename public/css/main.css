@@ -183,8 +183,9 @@ a {
 }
 
 #recFormButton {
-  padding: 0 5rem;
-  margin: auto auto auto 0.9rem;
+  padding: 0.5rem;
+  margin-left: 35%;
+  /*margin: auto auto auto 0.9rem;*/
   /*margin: 0.5rem auto 1rem 22%;*/
   box-shadow: 1px 1px 1px gray;
 }
@@ -315,6 +316,7 @@ li {
 
 input {
   text-align: center;
+  padding: 2px 5px 2px 5px;
 }
 
 #valResults {
