@@ -1,3 +1,77 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+}
+
+.content {
+  grid-column: span 12;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.footer {
+  align-items: end;
+  grid-column: span 12;
+}
+
+/* search box*/
+.item-a {
+  padding: 20px;
+  grid-column: 6 / span 6
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
+}
+
+.item-d {
+grid-column: 0 / span 6;
+}
+
+/* search again */
+.item-b {
+  text-align: center;
+  padding: 20px;
+  grid-column: 0 / span 12;
+  font-size: 2rem;
+}
+
+/* learn about trigger types */
+.item-c {
+  text-align: center;
+  font-size: 0.75rem;
+  text-shadow: 0.5px 0.5px 0.5px gray;
+  margin: auto;
+  grid-column: 0 / span 12;
+}
+
+.item-e {
+  margin: auto;
+  grid-column: 0 / span 12;
+  text-align: center;
+}
+
+.triggerBtn {
+  background-color: white;
+}
+
+#search {
+  text-align: center;
+  width: 100%;
+  margin: 1rem auto 3rem 5%;
+}
+
+#searchContainer {
+  font-size: 2rem;
+  margin: auto;
+  font-family: 'Passion One', cursive;
+}
+
+#searchBox input:hover {
+  box-shadow: 1px 1px 1px gray;
+}
+
 nav {
   font-size: 1rem;
   font-family: 'Oswald', sans-serif;
@@ -47,12 +121,6 @@ a {
   display: inline;
 }
 
-#aboutTriggerTypes {
-  font-size: 0.75rem;
-  text-shadow: 0.5px 0.5px 0.5px gray;
-  margin: 0 auto 2rem 40%;
-}
-
 .about {
   width: 100%;
   text-align: justify;
@@ -78,9 +146,10 @@ a {
   letter-spacing: 0.5px;
 }
 
-#toTop {
+.toTop {
   font-size: 0.75rem;
   margin: auto;
+  /*margin: auto auto auto 40%;*/
 }
 
 #brand {
@@ -88,49 +157,9 @@ a {
   text-shadow: 1px 1px 1px black;
 }
 
-#search {
-  text-align: center;
-  margin: 1rem auto 3rem 25%;
-}
-
-#searchContainer {
-  font-size: 2rem;
-  margin: auto;
-  font-family: 'Passion One', cursive;
-}
-
-#searchBox {
-  margin: 1rem auto 1rem 20%;
-  display: inline-block;
-  margin: auto;
-  padding: 2rem;
-  box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
-}
-
-#searchBox input:hover {
-  box-shadow: 1px 1px 1px gray;
-}
-
 .dropdown-item {
   text-align: center;
-}
-
-#checkBox {
-  margin: 3rem auto 2rem 25%;
-  display: inline-block;
-  margin: auto;
-  padding: 2rem;
-  box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
-  width: 367px;
-}
-
-#checkBoxBtn {
-  margin-left: 40%;
-  margin-top: 15px;
-}
-
-#checkBoxItems {
-  margin: 3px auto 7px 3rem;
+  background-color: white;
 }
 
 .recFormItem {
@@ -169,7 +198,6 @@ li {
 }
 
 .showResults {
-  /*visibility: hidden;*/
   display: none;
 }
 
@@ -185,11 +213,12 @@ li {
 }
 
 #resultsTitle{
+  text-align: left;
   background-color: #dedede;
   font-family: 'Merriweather', serif;
   font-size: 1.15rem;
   padding: 0.25rem;
-  padding-left: 3rem;
+  padding-left: 1rem;
   box-shadow: 1px 1px 2px gray;
   border-top: 1.5px solid red;
   border-left: 1.5px solid red;
@@ -208,11 +237,11 @@ li {
 
 #triggerButtonItem {
   margin: 10px;
+  background-color: white;
 }
 
 #triggerBox {
   box-shadow: 1px 1px 2px gray;
-  /*border: 1.25px solid red;*/
   border-top: 1px solid red;
   border-left: 1.5px solid red;
   border-right: 1.5px solid red;
@@ -221,7 +250,6 @@ li {
 
 #about {
   text-align: left;
-  /*margin: auto;*/
 }
 
 #validateEntries {
@@ -254,13 +282,12 @@ li {
 
 #inputBox {
   font-size: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding:.2rem 1rem .19rem 1rem;
   margin: auto;
 }
 
 .searchHeader {
-  margin: 0.5rem auto 1rem 20%;
+  /*margin: 0.5rem auto 1rem 20%;*/
   text-shadow: 1px 1px 1px white, 1px 1px 1px black;
 }
 

@@ -40,10 +40,10 @@
                 <a class="nav-link" href="#triggers">Trigger Types</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#searchContainer">Try It</a>
+                <a class="nav-link" href="/search">Try It</a>
               </li>
             </ul>
-          </div>
+          </div> <br/><br/>
 
 
 
@@ -126,160 +126,185 @@
                           </div>
                         </div>
                       </div>  <!-- z helpButtons -->
-
                     </div>
                   </div>
                 </div>
-
               </div>
-              <span id="toTop"><a href="#">return to top</a></span>
             </div>
-          </div> <hr/><br/><br/>
+            <span class="toTop"><a href="#">return to top</a></span>
+          </div>
+        </div> <br/><br/>
+
 
   <!-- how it works -->
-          <div class="container">
-            <div class="row col-xs-12">
-              <div id="howItWorks"><br/>
-                <h1> How This Application Works </h1>
-                  <p>
+        <div id="howItWorks"> <br/><br/><br/><br/>
+        <div class="card">
+          <div class="card-header">
+            <div class="container">
+              <div class="row col-xs-12">
+                <div class="card-body">
+                <h1 class="headers"> How This Application Works </h1>
+                  <p class="card-title">
                     This application queries our database using a "fuzzy search" and returns similar titles or trigger types. The results of the search print out on the screen showing the title and all trigger types associated with each title.
                   </p>
-
-                  <span id="toTop"><a href="#">return to top</a></span>
-              </div><br/><br/><br/>
-              <div id="db"><br/>
-                <h3> Our Database </h3>
-                  <p>
-                    Our database was built using keword results on<a href="http://www.imdb.com/search/keyword">IMDB</a>. There are six different<a href="#triggers">Trigger Types</a> that are comprised of numerous different IMDB keywords. Each Trigger Type is named in a way to convey the overall idea of which keywords are included but without making anyone read words that may trigger them.
-                  </p>
-                  <span id="toTop"><a href="#">return to top</a></span>
-              </div><br/><br/><br/>
-              <div id="triggers"><br/>
-                <h3> The Trigger Types </h3>
-                  <p id="warning">
-                    <b>WARNING</b>: Clicking each Trigger Type below will reveal the IMDB keywords used to build that Trigger Type in our database. Some of these words may trigger you. Please click with caution!
-                  </p>
-
-                <div id="triggerButtons">
-                  <ul>
-                    <li class="triggerButtonItem">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-info">Trigger Type: Sex </button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
-                          <a class="dropdown-item"> R*pe </a>
-                          <a class="dropdown-item"> Sexual Assault </a>
-                          <a class="dropdown-item"> Sexual Violence </a>
-                          <a class="dropdown-item"> Sex </a>
-                        </div>
-                      </div>
-                    <!-- </li>
-                    <li class="triggerButtonItem"> -->
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-info">Trigger Type: War </button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
-                          <a class="dropdown-item"> Shootout </a>
-                          <a class="dropdown-item"> Explosion </a>
-                          <a class="dropdown-item"> Combat </a>
-                        </div>
-                      </div>
-                    <!-- </li>
-                    <li class="triggerButtonItem"> -->
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-info">Trigger Type: Violence </button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
-                          <a class="dropdown-item"> Slasher </a>
-                          <a class="dropdown-item"> Blood </a>
-                          <a class="dropdown-item"> Murder </a>
-                          <a class="dropdown-item"> Violence </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="triggerButtonItem">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-info">Trigger Type: Loss </button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
-                          <a class="dropdown-item"> Loss </a>
-                          <a class="dropdown-item"> Death </a>
-                          <a class="dropdown-item"> Grief </a>
-                        </div>
-                      </div>
-                    <!-- </li>
-                    <li class="triggerButtonItem"> -->
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-info">Trigger Type: Self Harm </button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item"><em> IMDB Keywords: </em></a>
-                          <a class="dropdown-item"> Suicide </a>
-                          <a class="dropdown-item"> Eating Disorder </a>
-                          <a class="dropdown-item"> Self Mutilation </a>
-                          <a class="dropdown-item"> Cutting </a>
-                          <a class="dropdown-item"> Self Harm </a>
-                        </div>
-                      </div>
-                    <!-- </li>
-                    <li class="triggerButtonItem"> -->
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-info">Trigger Type: Child Abuse </button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item"><em> IMDB Keyword: </em></a>
-                          <a class="dropdown-item"> Child Abuse </a>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>  <!-- z triggerButtons -->
-
-                <br/><br/>
-                  <span id="toTop"><a href="#">return to top</a></span>
-              </div><br/><br/>
+                </div>
+              </div>
+              <span class="toTop"><a href="#">return to top</a></span><br/><br/>
             </div>
-          </div>  <!-- z how-it-works -->
-
+          </div>
         </div>
+        </div>
+
+              <br/><br/><br/><br/><br/><br/>
+
+        <div id="db"><br/><br/><br/><br/>
+        <div class="card">
+          <div class="card-header">
+            <div class="container">
+              <div class="row col-xs-12">
+                <div class="card-body">
+                  <h1 class="headers"> Our Database </h1>
+                    <p class="card-title">
+                      Our database was built using keword results on<a href="http://www.imdb.com/search/keyword">IMDB</a>. There are six different<a href="#triggers">Trigger Types</a> that are comprised of numerous different IMDB keywords. Each Trigger Type is named in a way to convey the overall idea of which keywords are included but without making anyone read words that may trigger them.
+                    </p>
+                    <span class="toTop"><a href="#">return to top</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+          <br/><br/><br/><br/><br/><br/>
+
+        <div id="triggers"><br/><br/><br/>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-body">
+            <h1 class="headers"> The Trigger Types </h1>
+              <p id="warning">
+                <b>WARNING</b>: Clicking each Trigger Type below will reveal the IMDB keywords used to build that Trigger Type in our database. Some of these words may trigger you. Please click with caution!
+              </p>
+
+            <div id="triggerButtons" class="card-body">
+              <ul>
+                <li class="triggerButtonItem">
+                  <div class="btn-group">
+                    <button type="button" class="triggerBtn btn btn-outline-info">Trigger Type: Sex </button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                      <a class="dropdown-item"> R*pe </a>
+                      <a class="dropdown-item"> Sexual Assault </a>
+                      <a class="dropdown-item"> Sexual Violence </a>
+                      <a class="dropdown-item"> Sex </a>
+                    </div>
+                  </div>
+                <!-- </li>
+                <li class="triggerButtonItem"> -->
+                  <div class="btn-group">
+                    <button type="button" class="triggerBtn btn btn-outline-info">Trigger Type: War </button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                      <a class="dropdown-item"> Shootout </a>
+                      <a class="dropdown-item"> Explosion </a>
+                      <a class="dropdown-item"> Combat </a>
+                    </div>
+                  </div>
+                <!-- </li>
+                <li class="triggerButtonItem"> -->
+                  <div class="btn-group">
+                    <button type="button" class="triggerBtn btn btn-outline-info">Trigger Type: Violence </button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                      <a class="dropdown-item"> Slasher </a>
+                      <a class="dropdown-item"> Blood </a>
+                      <a class="dropdown-item"> Murder </a>
+                      <a class="dropdown-item"> Violence </a>
+                    </div>
+                  </div>
+                </li>
+                <li class="triggerButtonItem">
+                  <div class="btn-group">
+                    <button type="button" class="triggerBtn btn btn-outline-info">Trigger Type: Loss </button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                      <a class="dropdown-item"> Loss </a>
+                      <a class="dropdown-item"> Death </a>
+                      <a class="dropdown-item"> Grief </a>
+                    </div>
+                  </div>
+                <!-- </li>
+                <li class="triggerButtonItem"> -->
+                  <div class="btn-group">
+                    <button type="button" class="triggerBtn btn btn-outline-info">Trigger Type: Self Harm </button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><em> IMDB Keywords: </em></a>
+                      <a class="dropdown-item"> Suicide </a>
+                      <a class="dropdown-item"> Eating Disorder </a>
+                      <a class="dropdown-item"> Self Mutilation </a>
+                      <a class="dropdown-item"> Cutting </a>
+                      <a class="dropdown-item"> Self Harm </a>
+                    </div>
+                  </div>
+                <!-- </li>
+                <li class="triggerButtonItem"> -->
+                  <div class="btn-group">
+                    <button type="button" class="triggerBtn btn btn-outline-info">Trigger Type: Child Abuse </button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><em> IMDB Keyword: </em></a>
+                      <a class="dropdown-item"> Child Abuse </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>  <!-- z triggerButtons -->
+            <span class="toTop"><a href="#">return to top</a></span>
+            </div>
+          </div>
+        </div>
+        </div>
+
       </div>  <!-- z main-content -->
 
-    </div>  <!-- z app -->
-
-
-
-<br/><hr/><br/>
+    </div>
 
 <!-- search div -->
-  <br/><br/>
-    <div class="container">
-      <div id="searchContainer" class="row col-xs-12">
-        <p class="headers">
-          Want to try it out? <a href="/search"> Search the database! </a>
-        </p>
-      </div><br/>
 
-      <div class="row col-xs-12">
-        <span id="toTop"><a href="#">return to top</a></span>
+  <br/><br/><br/><br/><br/><br/>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="container">
+        <div id="searchContainer" class="row col-xs-12">
+          <p class="headers">
+            Want to try it out? <a href="/search"> Search the database! </a>
+          </p>
+        </div><br/>
+
+        <div class="row col-xs-12">
+          <span class="toTop"><a href="#">return to top</a></span>
+        </div>
       </div>
-
     </div>
+  </div>
 
 <!-- footer div -->
   <br/><br/>

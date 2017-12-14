@@ -30,54 +30,75 @@
       <div class="row col-xs-12">
         <h1 class="headers"> Search Our Database </h1>
       </div>
-      <hr/><br/>
+      <hr/>
 
+<div class="wrapper">
+  <div class="content">
 
 <!-- search by title div -->
       <div v-bind:class="{hide: !visible}">
-
-      <h3 class="headers"> Search by Title: </h3>
-        <div class="container">
+      <span class="item-d">
+        <h3 class="headers"> Search by Title: </h3>
+      </span>
+        <div class="container-fluid">
           <div class="row col-xs-12">
-            <div id="search" >
+
+            <span class="item-a" > <!-- <div id="search" > -->
               <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
                 <div id="searchBox">
                   <input v-model="searchTitle" type="text" name="inputBox" size=24 placeholder="Enter A TV Show or Movie Title" id="inputBox">
                   <input type="submit" value="search">
                 </div>
               </form>
-            </div>
+            </span>
+
           </div>
 
         </div>
-        <br/>
+        <!-- <br/> -->
         </div>
 
-          <div id="searchAgain">
+          <!-- <div id="searchAgain"> -->
+          <div class="item-b">
+
             <div :class="{hide: visible}">
               <a href="/search" class="headers"> Search Again? </a>
             </div>
-          </div> <br/>
-
-          <div id="aboutTriggerTypes">
-            <a href="/about#triggers">Learn About Trigger Types </a>
           </div>
+
+          <!-- </div> -->
+
+
+          <div class="item-c">
+            <!-- <div id="aboutTriggerTypes"> -->
+              <a href="/about#triggers">Learn About Trigger Types </a>
+            <!-- </div> -->
+          </div>
+
         <hr />
 
 
 
 <!-- results div -->
-
+        <div class="item-e">
         <div v-bind:class="{showResults: visible}">
           <h2 class="searchHeader"> Search Results: {{recordsFound}} titles found</h2>
             <search-results v-for="item in searchResults" :key="item.id" v-bind:title="item.title" v-bind:trigger="item.triggerType"></search-results>
         </div> <!-- z results div -->
+        </div>
+
 
       </div> <!-- z mainContent div -->
 
+    </div>
+  </div>
+
+<br/><br/><br/><br/><br/><br/>
 <!-- footer div -->
-    <div id="footer">
-      <main-footer url="http://btfranzen.com"></main-footer>
+    <div :class="{hide: !visible}" class="footer">
+      <div id="footer">
+        <main-footer url="http://btfranzen.com"></main-footer>
+      </div>
     </div>
 
   </div>  <!-- z app -->
