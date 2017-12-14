@@ -53,10 +53,10 @@
             <div class="item-a">
               <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
                 <div id="searchBox">
-                  <input v-model="searchTitle" type="text" name="inputBox" size="22%" placeholder="Search By Title" id="inputBox" >
                   <label for="inputBox" title="search bar"></label>
-                  <input id="searchBtn" type="submit" value="search" name="searchButton">
-                  <label for="searchButton" title="search submit"></label>
+                  <input v-model="searchTitle" type="text" name="inputBox" size="22%" placeholder="Search By Title" id="inputBox" >
+                  <label for="search-button" title="search submit"></label>
+                  <input id="searchBtn" type="submit" value="search" name="search-button">
                 </div>
               </form>
             </div>
