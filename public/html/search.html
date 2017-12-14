@@ -53,9 +53,9 @@
             <div class="item-a">
               <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
                 <div id="searchBox">
-                  <label for="inputBox" title="search bar"></label>
+                  <label for="inputBox" title="search bar" class="hide">search by title</label>
                   <input v-model="searchTitle" type="text" name="inputBox" size="22%" placeholder="Search By Title" id="inputBox" >
-                  <label for="search-button" title="search submit"></label>
+                  <label for="search-button" title="search submit" class="hide">submit search</label>
                   <input id="searchBtn" type="submit" value="search" name="search-button">
                 </div>
               </form>
