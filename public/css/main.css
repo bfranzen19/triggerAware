@@ -38,14 +38,14 @@
 #searchBtn {
   display: inline-block;
   font-size: 1rem;
-  padding: 0.3rem 0.3rem 0.25rem 0.3rem;
+  padding: 0.1rem 0.3rem 0.2rem 0.3rem;
   margin: 0;
 }
 
 #inputBox {
   display: inline-block;
-  font-size: 1.2rem;
-  padding: 0.1rem 1rem 0.12rem 1rem;
+  font-size: 1rem;
+  padding: 0.1rem 0.5rem 0.12rem 0.5rem;
   /*margin: auto auto auto 20%;*/
   /*padding:.2rem 1rem .19rem 1rem;*/
   margin: auto;
