@@ -17,6 +17,7 @@
 
 /* search box*/
 .item-a {
+  text-align: center;
   padding: 30px;
   grid-column: 0 / span 12
   /*width: 100%;*/
@@ -30,13 +31,23 @@
 }
 
 #searchBox {
-  width: 100%;
+  /*width: 100%;*/
+  margin: auto;
 }
 
 #searchBtn {
   font-size: 1rem;
   padding: 0.25rem;
   margin: 0;
+}
+
+#inputBox {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem 0.3rem 1rem;
+  /*margin: auto auto auto 20%;*/
+  /*padding:.2rem 1rem .19rem 1rem;*/
+  margin: auto;
 }
 
 .item-d {
@@ -316,12 +327,7 @@ li {
   text-align: justify;
 }
 
-#inputBox {
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem 0.3rem 1rem;
-  /*padding:.2rem 1rem .19rem 1rem;*/
-  margin: auto;
-}
+
 
 .searchHeader {
   text-shadow: 1px 1px 1px white, 1px 1px 1px black;
