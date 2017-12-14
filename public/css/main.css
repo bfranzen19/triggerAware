@@ -88,6 +88,23 @@ grid-column: 1 / span 12;
   font-family: 'Passion One', cursive;
 }*/
 
+section {
+  box-sizing: border-box;
+  width: 100%;
+  display: table;
+  padding: 1rem 0 0;
+}
+
+.recItems {
+  /*display: table-cell;*/
+  display: inline-block;
+  width: 100%;
+  padding: .5rem .75rem;
+  margin: auto;
+}
+
+
+
 #searchBox input:hover {
   box-shadow: 1px 1px 1px gray;
 }
