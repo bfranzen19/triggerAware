@@ -17,9 +17,9 @@
 
 /* search box*/
 .item-a {
-  padding: 20px;
-  grid-column: 1 / span 12
-  width: 100%;
+  padding: 30px;
+  grid-column: 0 / span 12
+  /*width: 100%;*/
   margin: auto;
   padding: 1.5rem;
   box-shadow: 2px 2px 3px black, -1px -1px 1px lightgray;
@@ -297,8 +297,9 @@ li {
 }
 
 #inputBox {
-  font-size: 1rem;
-  padding:.2rem 1rem .19rem 1rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem 0.3rem 1rem;
+  /*padding:.2rem 1rem .19rem 1rem;*/
   margin: auto;
 }
 

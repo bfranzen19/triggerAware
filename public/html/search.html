@@ -35,18 +35,6 @@
 
 <!-- search by title div -->
 
-
-<!-- <h4 class="card-header">Featured</h4> -->
-<!-- <div class="card-body"> -->
-  <!-- <h4 class="card-title">Special title treatment</h4> -->
-  <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div> -->
-
-
-
-    <!-- <h3 class="headers"> Search by Title: </h3> -->
-
     <div class="card">
 
       <div v-bind:class="{hide: !visible}">
@@ -61,12 +49,12 @@
           <div class="wrapper">
             <div class="content">
 
-            <div class="item-a"> <!-- <div id="search" > -->
+            <div class="item-a">
               <form v-on:submit.prevent="searchDBtitle" v-on:submit="visible = !visible">
-                <span id="searchBox">
-                  <input v-model="searchTitle" type="text" name="inputBox" size="25%" placeholder="Enter A TV Show or Movie Title" id="inputBox">
+                <div id="searchBox">
+                  <input v-model="searchTitle" type="text" name="inputBox" size="22%" placeholder="Search By Title" id="inputBox">
                   <input id="searchBtn" type="submit" value="search">
-                </span>
+                </div>
               </form>
             </div>
             </div>
