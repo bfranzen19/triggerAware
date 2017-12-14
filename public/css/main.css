@@ -195,6 +195,7 @@ textarea {
 
 #recForm {
   margin: auto;
+  width: 79%;
   border: 1px solid black;
   padding: 1rem;
   box-shadow: .25rem .25rem .25rem gray;
