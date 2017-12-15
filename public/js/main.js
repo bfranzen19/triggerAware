@@ -102,7 +102,7 @@ var mainVM = new Vue({
 
     searchResults: [],
 
-    recEntries: [{
+    recEntries: {
       id: '',
       email: '',
       title: '',
@@ -110,7 +110,7 @@ var mainVM = new Vue({
       episodeNumber: '',
       episodeName: '',
       description: '',
-    }],
+    },
 
     visible: true,
 
@@ -165,16 +165,17 @@ var mainVM = new Vue({
     },
 
     validateEntries: function() {
-      console.log('mainVM.recEntries --- ', mainVM.recEntries[0].title)
-      $.post('/validateEntries', {recEntries}, function(dataFromServer) {
+      console.log('mainVM.recEntries --- ', mainVM.recEntries[0])
+      $.post('/validateEntries', this.recEntries[0], function(dataFromServer) {
         console.log('rec entries from db --- ', dataFromServer)
       })
-      mainVM.recEntries[0].title = ""
-      mainVM.recEntries[0].triggerType=""
-      mainVM.recEntries[0].episodeNumber=""
-      mainVM.recEntries[0].episodeName=""
-      mainVM.recEntries[0].description=""
-      mainVM.getRecEntries()
+
+      // mainVM.recEntries[0].title = ""
+      // mainVM.recEntries[0].triggerType=""
+      // mainVM.recEntries[0].episodeNumber=""
+      // mainVM.recEntries[0].episodeName=""
+      // mainVM.recEntries[0].description=""
+      // mainVM.getRecEntries()
     },
 
     removeRec: function(item) {

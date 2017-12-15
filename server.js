@@ -232,17 +232,19 @@ app.get('/validateEntries', function(req,res) {
 })
 
 app.post('/validateEntries', function(req,res) {
-  console.log('*** req.body --- ', req.body.recEntries[0])
+  console.log('*** req.body --- ', req.body.title)
 
   var newTrigger = {
-    title: req.body.recEntries[0].title,
-    triggerType: req.body.recEntries[0].triggerType,
-    episodeNumber: req.body.recEntries[0].episodeNumber,
-    episodeName: req.body.recEntries[0].episodeName,
-    description: req.body.recEntries[0].description,
+    title: req.body.title,
+    triggerType: req.body.triggerType,
+    episodeNumber: req.body.episodeNumber,
+    episodeName: req.body.episodeName,
+    description: req.body.description,
   }
 
-  new MediaModel1(newTrigger).save(function(err, newTrigger) {
+  console.log('*** new trigger --- ',newTrigger)
+
+  new MediaModel(newTrigger).save(function(err, newTrigger) {
     if(err) {
       res.status(418).send(err)
       console.log(err)
