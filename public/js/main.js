@@ -170,12 +170,12 @@ var mainVM = new Vue({
         console.log('rec entries from db --- ', dataFromServer)
       })
 
-      // mainVM.recEntries[0].title = ""
-      // mainVM.recEntries[0].triggerType=""
-      // mainVM.recEntries[0].episodeNumber=""
-      // mainVM.recEntries[0].episodeName=""
-      // mainVM.recEntries[0].description=""
-      // mainVM.getRecEntries()
+      mainVM.recEntries[0].title = ""
+      mainVM.recEntries[0].triggerType=""
+      mainVM.recEntries[0].episodeNumber=""
+      mainVM.recEntries[0].episodeName=""
+      mainVM.recEntries[0].description=""
+      mainVM.getRecEntries()
     },
 
     removeRec: function(item) {

@@ -249,7 +249,16 @@ app.post('/validateEntries', function(req,res) {
       res.status(418).send(err)
       console.log(err)
     }
-    res.status(200).send(newTrigger)
+    RecModel.findByIdAndRemove(req.body._id, function(err,rmItem) {
+      if(err) {
+        console.log(err)
+        res.send(err)
+      } else {
+        console.log('deleted --- ', rmItem)
+        res.send(rmItem)
+      }
+    })
+    // res.status(200).send('added to db')
   })
 })
 
